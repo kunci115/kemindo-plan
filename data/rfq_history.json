@@ -1,0 +1,1365 @@
+{
+  "_meta": {
+    "description": "DUMMY historical RFQ + quotation. NOT real Kemindo deals.",
+    "data_source": "dummy (seeded)",
+    "generated": "2026-06-27"
+  },
+  "rfqs": [
+    {
+      "rfq_no": "RFQ-2025-001",
+      "quotation_no": "QT-2025-001",
+      "customer_id": "C009",
+      "customer": "PT Fajar Surya Wisesa",
+      "industry": "Paper",
+      "received_date": "2026-02-25",
+      "problem_statement": "Brightness menurun di mesin 2",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P036",
+          "name": "Optical Brightening Agent (OBA)",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 13600.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 131920000,
+          "realized_margin_pct": 0.257
+        },
+        {
+          "product_id": "P001",
+          "name": "Hydrated Lime",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 27100.0,
+          "discount_pct": 0,
+          "line_total_idr": 271000000,
+          "realized_margin_pct": 0.133
+        }
+      ],
+      "total_idr": 402920000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-002",
+      "quotation_no": "QT-2025-002",
+      "customer_id": "C019",
+      "customer": "PT Merdeka Copper Gold",
+      "industry": "Gold Mine",
+      "received_date": "2026-01-11",
+      "problem_statement": "Butuh reagent leaching bulanan",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P001",
+          "name": "Hydrated Lime",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 27100.0,
+          "discount_pct": 0,
+          "line_total_idr": 271000000,
+          "realized_margin_pct": 0.133
+        },
+        {
+          "product_id": "P003",
+          "name": "Activated Carbon",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 34400.0,
+          "discount_pct": 0,
+          "line_total_idr": 344000000,
+          "realized_margin_pct": 0.227
+        },
+        {
+          "product_id": "P013",
+          "name": "Forged Grinding Balls",
+          "qty": 50,
+          "unit": "MT",
+          "unit_price_idr": 36900400.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 1789669400,
+          "realized_margin_pct": 0.141
+        }
+      ],
+      "total_idr": 2404669400,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-003",
+      "quotation_no": "QT-2025-003",
+      "customer_id": "C011",
+      "customer": "PT Pabrik Kertas Tjiwi",
+      "industry": "Paper",
+      "received_date": "2025-07-10",
+      "problem_statement": "Brightness menurun di mesin 2",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P033",
+          "name": "Micropolymer",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 40700.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 394790000,
+          "realized_margin_pct": 0.24
+        },
+        {
+          "product_id": "P027",
+          "name": "Sodium Hydroxide Pearl",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 14300.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 271700000,
+          "realized_margin_pct": 0.153
+        }
+      ],
+      "total_idr": 666490000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-004",
+      "quotation_no": "QT-2025-004",
+      "customer_id": "C008",
+      "customer": "PT Pindo Deli Pulp & Paper",
+      "industry": "Paper",
+      "received_date": "2025-09-03",
+      "problem_statement": "Brightness menurun di mesin 2",
+      "response_days": 5,
+      "items": [
+        {
+          "product_id": "P006",
+          "name": "Caustic Soda Pearl",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 11900.0,
+          "discount_pct": 0,
+          "line_total_idr": 238000000,
+          "realized_margin_pct": 0.16
+        },
+        {
+          "product_id": "P041",
+          "name": "Latex (Coating Binder)",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 26300.0,
+          "discount_pct": 0,
+          "line_total_idr": 1052000000,
+          "realized_margin_pct": 0.202
+        },
+        {
+          "product_id": "P005",
+          "name": "Caustic Soda Flake",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 18500.0,
+          "discount_pct": 0,
+          "line_total_idr": 740000000,
+          "realized_margin_pct": 0.108
+        }
+      ],
+      "total_idr": 2030000000,
+      "status": "LOST",
+      "lost_reason": "Lead time terlalu lama"
+    },
+    {
+      "rfq_no": "RFQ-2025-005",
+      "quotation_no": "QT-2025-005",
+      "customer_id": "C015",
+      "customer": "PT Adaro Energy",
+      "industry": "Energy",
+      "received_date": "2025-08-25",
+      "problem_statement": "PKS biomass supply",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P047",
+          "name": "Palm Kernel Shell (PKS)",
+          "qty": 100,
+          "unit": "MT",
+          "unit_price_idr": 28291900.0,
+          "discount_pct": 0,
+          "line_total_idr": 2829190000,
+          "realized_margin_pct": 0.086
+        },
+        {
+          "product_id": "P045",
+          "name": "Crude Palm Oil (CPO)",
+          "qty": 100,
+          "unit": "MT",
+          "unit_price_idr": 5620800.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 545217600,
+          "realized_margin_pct": 0.05
+        }
+      ],
+      "total_idr": 3374407600,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-006",
+      "quotation_no": "QT-2025-006",
+      "customer_id": "C019",
+      "customer": "PT Merdeka Copper Gold",
+      "industry": "Gold Mine",
+      "received_date": "2026-04-16",
+      "problem_statement": "Cyanide detox effluent over limit",
+      "response_days": 5,
+      "items": [
+        {
+          "product_id": "P022",
+          "name": "Aluminum Powder",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 11900.0,
+          "discount_pct": 0,
+          "line_total_idr": 476000000,
+          "realized_margin_pct": 0.134
+        },
+        {
+          "product_id": "P029",
+          "name": "CMC Fluorine Mitigation",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 11100.0,
+          "discount_pct": 0,
+          "line_total_idr": 444000000,
+          "realized_margin_pct": 0.234
+        },
+        {
+          "product_id": "P014",
+          "name": "Cast Grinding Balls",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 6097400.0,
+          "discount_pct": 0,
+          "line_total_idr": 1524350000,
+          "realized_margin_pct": 0.141
+        }
+      ],
+      "total_idr": 2444350000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-007",
+      "quotation_no": "QT-2025-007",
+      "customer_id": "C014",
+      "customer": "PT Smelting Gresik",
+      "industry": "Alumina Smelter",
+      "received_date": "2025-08-24",
+      "problem_statement": "Quick lime flux supply",
+      "response_days": 8,
+      "items": [
+        {
+          "product_id": "P015",
+          "name": "Low Cement Castable",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 34116700.0,
+          "discount_pct": 0,
+          "line_total_idr": 8529175000,
+          "realized_margin_pct": 0.194
+        },
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 133000000,
+          "realized_margin_pct": 0.113
+        }
+      ],
+      "total_idr": 8662175000,
+      "status": "LOST",
+      "lost_reason": "Budget customer dipotong"
+    },
+    {
+      "rfq_no": "RFQ-2025-008",
+      "quotation_no": "QT-2025-008",
+      "customer_id": "C005",
+      "customer": "PT IMIP (Indonesia Morowali)",
+      "industry": "Nickel",
+      "received_date": "2025-12-13",
+      "problem_statement": "Butuh asam sulfat HPAL kontrak",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P009",
+          "name": "Hydrochloric Acid",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 12100.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 114950000,
+          "realized_margin_pct": 0.121
+        },
+        {
+          "product_id": "P014",
+          "name": "Cast Grinding Balls",
+          "qty": 25,
+          "unit": "MT",
+          "unit_price_idr": 6097400.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 147861950,
+          "realized_margin_pct": 0.115
+        }
+      ],
+      "total_idr": 262811950,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-009",
+      "quotation_no": "QT-2025-009",
+      "customer_id": "C015",
+      "customer": "PT Adaro Energy",
+      "industry": "Energy",
+      "received_date": "2025-07-15",
+      "problem_statement": "PKS biomass supply",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P047",
+          "name": "Palm Kernel Shell (PKS)",
+          "qty": 25,
+          "unit": "MT",
+          "unit_price_idr": 28291900.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 686078575,
+          "realized_margin_pct": 0.057
+        }
+      ],
+      "total_idr": 686078575,
+      "status": "LOST",
+      "lost_reason": "Budget customer dipotong"
+    },
+    {
+      "rfq_no": "RFQ-2025-010",
+      "quotation_no": "QT-2025-010",
+      "customer_id": "C007",
+      "customer": "PT Indah Kiat Pulp & Paper",
+      "industry": "Paper",
+      "received_date": "2025-08-13",
+      "problem_statement": "Butuh surface size starch",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P027",
+          "name": "Sodium Hydroxide Pearl",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 14300.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 1387100000,
+          "realized_margin_pct": 0.171
+        },
+        {
+          "product_id": "P031",
+          "name": "Special Bentonite",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 46100.0,
+          "discount_pct": 0,
+          "line_total_idr": 922000000,
+          "realized_margin_pct": 0.247
+        }
+      ],
+      "total_idr": 2309100000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-011",
+      "quotation_no": "QT-2025-011",
+      "customer_id": "C018",
+      "customer": "PT Aneka Tambang Nickel",
+      "industry": "Nickel",
+      "received_date": "2025-07-09",
+      "problem_statement": "Refractory smelter perlu reline",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P026",
+          "name": "Ion Exchange Resin",
+          "qty": 2000,
+          "unit": "L",
+          "unit_price_idr": 69100.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 131290000,
+          "realized_margin_pct": 0.083
+        }
+      ],
+      "total_idr": 131290000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-012",
+      "quotation_no": "QT-2025-012",
+      "customer_id": "C013",
+      "customer": "PT Weda Bay Nickel",
+      "industry": "Nickel",
+      "received_date": "2026-02-18",
+      "problem_statement": "Refractory smelter perlu reline",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P013",
+          "name": "Forged Grinding Balls",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 36900400.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 8763845000,
+          "realized_margin_pct": 0.123
+        },
+        {
+          "product_id": "P015",
+          "name": "Low Cement Castable",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 34116700.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 8102716250,
+          "realized_margin_pct": 0.151
+        },
+        {
+          "product_id": "P016",
+          "name": "Electrode Paste",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 32539400.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 7890804500,
+          "realized_margin_pct": 0.166
+        }
+      ],
+      "total_idr": 24757365750,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-013",
+      "quotation_no": "QT-2025-013",
+      "customer_id": "C008",
+      "customer": "PT Pindo Deli Pulp & Paper",
+      "industry": "Paper",
+      "received_date": "2025-08-31",
+      "problem_statement": "Retention drainage drop",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P044",
+          "name": "Ground Limestone (Calcium Carbonate)",
+          "qty": 100,
+          "unit": "MT",
+          "unit_price_idr": 37072300.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 3596013100,
+          "realized_margin_pct": 0.112
+        }
+      ],
+      "total_idr": 3596013100,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-014",
+      "quotation_no": "QT-2025-014",
+      "customer_id": "C007",
+      "customer": "PT Indah Kiat Pulp & Paper",
+      "industry": "Paper",
+      "received_date": "2025-09-30",
+      "problem_statement": "Brightness menurun di mesin 2",
+      "response_days": 8,
+      "items": [
+        {
+          "product_id": "P036",
+          "name": "Optical Brightening Agent (OBA)",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 13600.0,
+          "discount_pct": 0,
+          "line_total_idr": 1360000000,
+          "realized_margin_pct": 0.279
+        },
+        {
+          "product_id": "P027",
+          "name": "Sodium Hydroxide Pearl",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 14300.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 554840000,
+          "realized_margin_pct": 0.171
+        },
+        {
+          "product_id": "P044",
+          "name": "Ground Limestone (Calcium Carbonate)",
+          "qty": 100,
+          "unit": "MT",
+          "unit_price_idr": 37072300.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 3596013100,
+          "realized_margin_pct": 0.112
+        }
+      ],
+      "total_idr": 5510853100,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-015",
+      "quotation_no": "QT-2025-015",
+      "customer_id": "C018",
+      "customer": "PT Aneka Tambang Nickel",
+      "industry": "Nickel",
+      "received_date": "2026-04-10",
+      "problem_statement": "Flokulan tailing thickener",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P014",
+          "name": "Cast Grinding Balls",
+          "qty": 50,
+          "unit": "MT",
+          "unit_price_idr": 6097400.0,
+          "discount_pct": 0,
+          "line_total_idr": 304870000,
+          "realized_margin_pct": 0.141
+        }
+      ],
+      "total_idr": 304870000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-016",
+      "quotation_no": "QT-2025-016",
+      "customer_id": "C016",
+      "customer": "PT Cargill Indonesia",
+      "industry": "Agriculture",
+      "received_date": "2026-03-03",
+      "problem_statement": "Organic fertilizer trial",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P004",
+          "name": "Copper Sulphate",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 37600.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 3572000000,
+          "realized_margin_pct": 0.118
+        }
+      ],
+      "total_idr": 3572000000,
+      "status": "LOST",
+      "lost_reason": "Harga kompetitor lebih murah"
+    },
+    {
+      "rfq_no": "RFQ-2025-017",
+      "quotation_no": "QT-2025-017",
+      "customer_id": "C009",
+      "customer": "PT Fajar Surya Wisesa",
+      "industry": "Paper",
+      "received_date": "2025-09-16",
+      "problem_statement": "Pitch/stickies deposit naik",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P010",
+          "name": "Sodium Metabisulfite",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 34100.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 323950000,
+          "realized_margin_pct": 0.108
+        },
+        {
+          "product_id": "P006",
+          "name": "Caustic Soda Pearl",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 11900.0,
+          "discount_pct": 0,
+          "line_total_idr": 238000000,
+          "realized_margin_pct": 0.16
+        }
+      ],
+      "total_idr": 561950000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-018",
+      "quotation_no": "QT-2025-018",
+      "customer_id": "C008",
+      "customer": "PT Pindo Deli Pulp & Paper",
+      "industry": "Paper",
+      "received_date": "2026-03-25",
+      "problem_statement": "Butuh surface size starch",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P038",
+          "name": "Dry Strength Resin",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 30700.0,
+          "discount_pct": 0,
+          "line_total_idr": 307000000,
+          "realized_margin_pct": 0.218
+        }
+      ],
+      "total_idr": 307000000,
+      "status": "LOST",
+      "lost_reason": "Spec tidak sesuai"
+    },
+    {
+      "rfq_no": "RFQ-2025-019",
+      "quotation_no": "QT-2025-019",
+      "customer_id": "C019",
+      "customer": "PT Merdeka Copper Gold",
+      "industry": "Gold Mine",
+      "received_date": "2025-08-11",
+      "problem_statement": "Butuh reagent leaching bulanan",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P012",
+          "name": "Sodium Isopropyl Xanthate (SIPX)",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 16800.0,
+          "discount_pct": 0,
+          "line_total_idr": 336000000,
+          "realized_margin_pct": 0.173
+        },
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 543200000,
+          "realized_margin_pct": 0.131
+        }
+      ],
+      "total_idr": 879200000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-020",
+      "quotation_no": "QT-2025-020",
+      "customer_id": "C018",
+      "customer": "PT Aneka Tambang Nickel",
+      "industry": "Nickel",
+      "received_date": "2026-02-16",
+      "problem_statement": "Flokulan tailing thickener",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P009",
+          "name": "Hydrochloric Acid",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 12100.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 229900000,
+          "realized_margin_pct": 0.121
+        }
+      ],
+      "total_idr": 229900000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-021",
+      "quotation_no": "QT-2025-021",
+      "customer_id": "C010",
+      "customer": "PT Tjiwi Kimia",
+      "industry": "Paper",
+      "received_date": "2026-02-18",
+      "problem_statement": "Retention drainage drop",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P025",
+          "name": "Polymer PAM (Polyacrylamide)",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 27200.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 2638400000,
+          "realized_margin_pct": 0.117
+        }
+      ],
+      "total_idr": 2638400000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-022",
+      "quotation_no": "QT-2025-022",
+      "customer_id": "C019",
+      "customer": "PT Merdeka Copper Gold",
+      "industry": "Gold Mine",
+      "received_date": "2025-09-23",
+      "problem_statement": "Cyanide detox effluent over limit",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P008",
+          "name": "Sulfuric Acid",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 28700.0,
+          "discount_pct": 0,
+          "line_total_idr": 1148000000,
+          "realized_margin_pct": 0.171
+        },
+        {
+          "product_id": "P025",
+          "name": "Polymer PAM (Polyacrylamide)",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 27200.0,
+          "discount_pct": 0,
+          "line_total_idr": 2720000000,
+          "realized_margin_pct": 0.143
+        },
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0,
+          "line_total_idr": 280000000,
+          "realized_margin_pct": 0.157
+        }
+      ],
+      "total_idr": 4148000000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-023",
+      "quotation_no": "QT-2025-023",
+      "customer_id": "C004",
+      "customer": "PT Vale Indonesia",
+      "industry": "Nickel",
+      "received_date": "2026-05-03",
+      "problem_statement": "Refractory smelter perlu reline",
+      "response_days": 8,
+      "items": [
+        {
+          "product_id": "P015",
+          "name": "Low Cement Castable",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 34116700.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 8102716250,
+          "realized_margin_pct": 0.151
+        },
+        {
+          "product_id": "P018",
+          "name": "Calcium Carbide",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 18200.0,
+          "discount_pct": 0,
+          "line_total_idr": 182000000,
+          "realized_margin_pct": 0.17
+        }
+      ],
+      "total_idr": 8284716250,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-024",
+      "quotation_no": "QT-2025-024",
+      "customer_id": "C011",
+      "customer": "PT Pabrik Kertas Tjiwi",
+      "industry": "Paper",
+      "received_date": "2026-03-23",
+      "problem_statement": "Butuh surface size starch",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P027",
+          "name": "Sodium Hydroxide Pearl",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 14300.0,
+          "discount_pct": 0,
+          "line_total_idr": 572000000,
+          "realized_margin_pct": 0.196
+        },
+        {
+          "product_id": "P001",
+          "name": "Hydrated Lime",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 27100.0,
+          "discount_pct": 0,
+          "line_total_idr": 2710000000,
+          "realized_margin_pct": 0.133
+        },
+        {
+          "product_id": "P006",
+          "name": "Caustic Soda Pearl",
+          "qty": 40000,
+          "unit": "kg",
+          "unit_price_idr": 11900.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 452200000,
+          "realized_margin_pct": 0.115
+        }
+      ],
+      "total_idr": 3734200000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-025",
+      "quotation_no": "QT-2025-025",
+      "customer_id": "C006",
+      "customer": "PT Huadi Nickel-Alloy",
+      "industry": "Nickel",
+      "received_date": "2025-09-21",
+      "problem_statement": "Refractory smelter perlu reline",
+      "response_days": 8,
+      "items": [
+        {
+          "product_id": "P019",
+          "name": "Sulphur Granular",
+          "qty": 25,
+          "unit": "MT",
+          "unit_price_idr": 32872300.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 797153275,
+          "realized_margin_pct": 0.154
+        },
+        {
+          "product_id": "P026",
+          "name": "Ion Exchange Resin",
+          "qty": 2000,
+          "unit": "L",
+          "unit_price_idr": 69100.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 134054000,
+          "realized_margin_pct": 0.102
+        },
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0,
+          "line_total_idr": 1400000000,
+          "realized_margin_pct": 0.157
+        }
+      ],
+      "total_idr": 2331207275,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-026",
+      "quotation_no": "QT-2025-026",
+      "customer_id": "C016",
+      "customer": "PT Cargill Indonesia",
+      "industry": "Agriculture",
+      "received_date": "2025-12-13",
+      "problem_statement": "Organic fertilizer trial",
+      "response_days": 5,
+      "items": [
+        {
+          "product_id": "P045",
+          "name": "Crude Palm Oil (CPO)",
+          "qty": 25,
+          "unit": "MT",
+          "unit_price_idr": 5620800.0,
+          "discount_pct": 0,
+          "line_total_idr": 140520000,
+          "realized_margin_pct": 0.078
+        },
+        {
+          "product_id": "P004",
+          "name": "Copper Sulphate",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 37600.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 3647200000,
+          "realized_margin_pct": 0.136
+        }
+      ],
+      "total_idr": 3787720000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-027",
+      "quotation_no": "QT-2025-027",
+      "customer_id": "C001",
+      "customer": "PT Agincourt Resources",
+      "industry": "Gold Mine",
+      "received_date": "2025-11-14",
+      "problem_statement": "Butuh reagent leaching bulanan",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P026",
+          "name": "Ion Exchange Resin",
+          "qty": 8000,
+          "unit": "L",
+          "unit_price_idr": 69100.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 536216000,
+          "realized_margin_pct": 0.102
+        },
+        {
+          "product_id": "P025",
+          "name": "Polymer PAM (Polyacrylamide)",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 27200.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 258400000,
+          "realized_margin_pct": 0.098
+        },
+        {
+          "product_id": "P001",
+          "name": "Hydrated Lime",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 27100.0,
+          "discount_pct": 0,
+          "line_total_idr": 542000000,
+          "realized_margin_pct": 0.133
+        }
+      ],
+      "total_idr": 1336616000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-028",
+      "quotation_no": "QT-2025-028",
+      "customer_id": "C015",
+      "customer": "PT Adaro Energy",
+      "industry": "Energy",
+      "received_date": "2026-04-09",
+      "problem_statement": "PKS biomass supply",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P047",
+          "name": "Palm Kernel Shell (PKS)",
+          "qty": 50,
+          "unit": "MT",
+          "unit_price_idr": 28291900.0,
+          "discount_pct": 0,
+          "line_total_idr": 1414595000,
+          "realized_margin_pct": 0.086
+        },
+        {
+          "product_id": "P045",
+          "name": "Crude Palm Oil (CPO)",
+          "qty": 100,
+          "unit": "MT",
+          "unit_price_idr": 5620800.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 545217600,
+          "realized_margin_pct": 0.05
+        }
+      ],
+      "total_idr": 1959812600,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-029",
+      "quotation_no": "QT-2025-029",
+      "customer_id": "C008",
+      "customer": "PT Pindo Deli Pulp & Paper",
+      "industry": "Paper",
+      "received_date": "2026-03-13",
+      "problem_statement": "Pitch/stickies deposit naik",
+      "response_days": 5,
+      "items": [
+        {
+          "product_id": "P035",
+          "name": "ASA Sizing Agent",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 16400.0,
+          "discount_pct": 0,
+          "line_total_idr": 328000000,
+          "realized_margin_pct": 0.201
+        }
+      ],
+      "total_idr": 328000000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-030",
+      "quotation_no": "QT-2025-030",
+      "customer_id": "C009",
+      "customer": "PT Fajar Surya Wisesa",
+      "industry": "Paper",
+      "received_date": "2026-05-03",
+      "problem_statement": "Retention drainage drop",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P036",
+          "name": "Optical Brightening Agent (OBA)",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 13600.0,
+          "discount_pct": 0,
+          "line_total_idr": 136000000,
+          "realized_margin_pct": 0.279
+        },
+        {
+          "product_id": "P025",
+          "name": "Polymer PAM (Polyacrylamide)",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 27200.0,
+          "discount_pct": 0,
+          "line_total_idr": 272000000,
+          "realized_margin_pct": 0.143
+        }
+      ],
+      "total_idr": 408000000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-031",
+      "quotation_no": "QT-2025-031",
+      "customer_id": "C009",
+      "customer": "PT Fajar Surya Wisesa",
+      "industry": "Paper",
+      "received_date": "2026-04-27",
+      "problem_statement": "Butuh surface size starch",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P031",
+          "name": "Special Bentonite",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 46100.0,
+          "discount_pct": 0,
+          "line_total_idr": 4610000000,
+          "realized_margin_pct": 0.247
+        },
+        {
+          "product_id": "P037",
+          "name": "Wet Strength Resin",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 39200.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 3802400000,
+          "realized_margin_pct": 0.185
+        }
+      ],
+      "total_idr": 8412400000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-032",
+      "quotation_no": "QT-2025-032",
+      "customer_id": "C015",
+      "customer": "PT Adaro Energy",
+      "industry": "Energy",
+      "received_date": "2025-10-05",
+      "problem_statement": "PKS biomass supply",
+      "response_days": 5,
+      "items": [
+        {
+          "product_id": "P047",
+          "name": "Palm Kernel Shell (PKS)",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 28291900.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 6719326250,
+          "realized_margin_pct": 0.038
+        },
+        {
+          "product_id": "P045",
+          "name": "Crude Palm Oil (CPO)",
+          "qty": 25,
+          "unit": "MT",
+          "unit_price_idr": 5620800.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 136304400,
+          "realized_margin_pct": 0.05
+        }
+      ],
+      "total_idr": 6855630650,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-033",
+      "quotation_no": "QT-2025-033",
+      "customer_id": "C013",
+      "customer": "PT Weda Bay Nickel",
+      "industry": "Nickel",
+      "received_date": "2026-02-28",
+      "problem_statement": "Refractory smelter perlu reline",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P019",
+          "name": "Sulphur Granular",
+          "qty": 50,
+          "unit": "MT",
+          "unit_price_idr": 32872300.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 1594306550,
+          "realized_margin_pct": 0.154
+        }
+      ],
+      "total_idr": 1594306550,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-034",
+      "quotation_no": "QT-2025-034",
+      "customer_id": "C005",
+      "customer": "PT IMIP (Indonesia Morowali)",
+      "industry": "Nickel",
+      "received_date": "2026-03-27",
+      "problem_statement": "Butuh asam sulfat HPAL kontrak",
+      "response_days": 8,
+      "items": [
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0,
+          "line_total_idr": 1400000000,
+          "realized_margin_pct": 0.157
+        },
+        {
+          "product_id": "P008",
+          "name": "Sulfuric Acid",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 28700.0,
+          "discount_pct": 0,
+          "line_total_idr": 287000000,
+          "realized_margin_pct": 0.171
+        }
+      ],
+      "total_idr": 1687000000,
+      "status": "LOST",
+      "lost_reason": "Lead time terlalu lama"
+    },
+    {
+      "rfq_no": "RFQ-2025-035",
+      "quotation_no": "QT-2025-035",
+      "customer_id": "C014",
+      "customer": "PT Smelting Gresik",
+      "industry": "Alumina Smelter",
+      "received_date": "2025-08-11",
+      "problem_statement": "Quick lime flux supply",
+      "response_days": 2,
+      "items": [
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 135800000,
+          "realized_margin_pct": 0.131
+        },
+        {
+          "product_id": "P015",
+          "name": "Low Cement Castable",
+          "qty": 250,
+          "unit": "MT",
+          "unit_price_idr": 34116700.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 8102716250,
+          "realized_margin_pct": 0.151
+        }
+      ],
+      "total_idr": 8238516250,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-036",
+      "quotation_no": "QT-2025-036",
+      "customer_id": "C016",
+      "customer": "PT Cargill Indonesia",
+      "industry": "Agriculture",
+      "received_date": "2026-02-13",
+      "problem_statement": "Organic fertilizer trial",
+      "response_days": 1,
+      "items": [
+        {
+          "product_id": "P004",
+          "name": "Copper Sulphate",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 37600.0,
+          "discount_pct": 0,
+          "line_total_idr": 3760000000,
+          "realized_margin_pct": 0.162
+        },
+        {
+          "product_id": "P019",
+          "name": "Sulphur Granular",
+          "qty": 50,
+          "unit": "MT",
+          "unit_price_idr": 32872300.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 1561434250,
+          "realized_margin_pct": 0.136
+        },
+        {
+          "product_id": "P046",
+          "name": "Palm Kernel Expeller (PKE)",
+          "qty": 50,
+          "unit": "MT",
+          "unit_price_idr": 6553200.0,
+          "discount_pct": 0,
+          "line_total_idr": 327660000,
+          "realized_margin_pct": 0.125
+        }
+      ],
+      "total_idr": 5649094250,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-037",
+      "quotation_no": "QT-2025-037",
+      "customer_id": "C002",
+      "customer": "PT Bumi Suksesindo",
+      "industry": "Gold Mine",
+      "received_date": "2025-11-03",
+      "problem_statement": "Grinding media wear tinggi",
+      "response_days": 5,
+      "items": [
+        {
+          "product_id": "P002",
+          "name": "Quick Lime",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 14000.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 1358000000,
+          "realized_margin_pct": 0.131
+        },
+        {
+          "product_id": "P012",
+          "name": "Sodium Isopropyl Xanthate (SIPX)",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 16800.0,
+          "discount_pct": 0,
+          "line_total_idr": 168000000,
+          "realized_margin_pct": 0.173
+        }
+      ],
+      "total_idr": 1526000000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-038",
+      "quotation_no": "QT-2025-038",
+      "customer_id": "C006",
+      "customer": "PT Huadi Nickel-Alloy",
+      "industry": "Nickel",
+      "received_date": "2026-05-14",
+      "problem_statement": "Butuh asam sulfat HPAL kontrak",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P009",
+          "name": "Hydrochloric Acid",
+          "qty": 20000,
+          "unit": "kg",
+          "unit_price_idr": 12100.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 229900000,
+          "realized_margin_pct": 0.121
+        }
+      ],
+      "total_idr": 229900000,
+      "status": "PENDING"
+    },
+    {
+      "rfq_no": "RFQ-2025-039",
+      "quotation_no": "QT-2025-039",
+      "customer_id": "C019",
+      "customer": "PT Merdeka Copper Gold",
+      "industry": "Gold Mine",
+      "received_date": "2026-02-21",
+      "problem_statement": "Gold recovery turun di CIL circuit",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P010",
+          "name": "Sodium Metabisulfite",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 34100.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 330770000,
+          "realized_margin_pct": 0.126
+        }
+      ],
+      "total_idr": 330770000,
+      "status": "WON"
+    },
+    {
+      "rfq_no": "RFQ-2025-040",
+      "quotation_no": "QT-2025-040",
+      "customer_id": "C010",
+      "customer": "PT Tjiwi Kimia",
+      "industry": "Paper",
+      "received_date": "2025-12-02",
+      "problem_statement": "Butuh surface size starch",
+      "response_days": 3,
+      "items": [
+        {
+          "product_id": "P038",
+          "name": "Dry Strength Resin",
+          "qty": 10000,
+          "unit": "kg",
+          "unit_price_idr": 30700.0,
+          "discount_pct": 0.03,
+          "line_total_idr": 297790000,
+          "realized_margin_pct": 0.194
+        },
+        {
+          "product_id": "P020",
+          "name": "Aluminum Sulfate (Solid)",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 36600.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 3477000000,
+          "realized_margin_pct": 0.12
+        },
+        {
+          "product_id": "P006",
+          "name": "Caustic Soda Pearl",
+          "qty": 100000,
+          "unit": "kg",
+          "unit_price_idr": 11900.0,
+          "discount_pct": 0.05,
+          "line_total_idr": 1130500000,
+          "realized_margin_pct": 0.115
+        }
+      ],
+      "total_idr": 4905290000,
+      "status": "WON"
+    }
+  ]
+}

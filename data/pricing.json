@@ -1,0 +1,488 @@
+{
+  "_meta": {
+    "description": "DUMMY pricing + margin/discount rules. NOT Kemindo real prices.",
+    "currency": "IDR",
+    "data_source": "dummy (seeded). Replace with ERP price list before production.",
+    "generated": "2026-06-27"
+  },
+  "margin_rules": {
+    "floor_margin_pct": 0.08,
+    "approval_thresholds": [
+      {
+        "if_margin_below_pct": 0.12,
+        "approval": "Sales Manager"
+      },
+      {
+        "if_margin_below_pct": 0.08,
+        "approval": "Commercial Director"
+      },
+      {
+        "if_discount_above_pct": 0.1,
+        "approval": "Sales Manager"
+      },
+      {
+        "if_order_value_above_idr": 500000000,
+        "approval": "Commercial Director"
+      }
+    ],
+    "volume_discount_tiers": [
+      {
+        "min_qty_ratio_vs_typical": 1.0,
+        "discount_pct": 0.0
+      },
+      {
+        "min_qty_ratio_vs_typical": 3.0,
+        "discount_pct": 0.03
+      },
+      {
+        "min_qty_ratio_vs_typical": 5.0,
+        "discount_pct": 0.05
+      },
+      {
+        "min_qty_ratio_vs_typical": 10.0,
+        "discount_pct": 0.08
+      }
+    ],
+    "payment_term_adjust": {
+      "CBD": -0.02,
+      "NET30": 0.0,
+      "NET60": 0.015,
+      "NET90": 0.03
+    },
+    "incoterm_note": "List prices are EXW WH. Add freight per incoterm (see logistics)."
+  },
+  "price_list": [
+    {
+      "product_id": "P001",
+      "name": "Hydrated Lime",
+      "unit": "kg",
+      "cost_idr": 23500.0,
+      "list_price_idr": 27100.0,
+      "target_margin_pct": 0.154,
+      "floor_price_idr": 25400.0
+    },
+    {
+      "product_id": "P002",
+      "name": "Quick Lime",
+      "unit": "kg",
+      "cost_idr": 11800.0,
+      "list_price_idr": 14000.0,
+      "target_margin_pct": 0.183,
+      "floor_price_idr": 12700.0
+    },
+    {
+      "product_id": "P003",
+      "name": "Activated Carbon",
+      "unit": "kg",
+      "cost_idr": 26600.0,
+      "list_price_idr": 34400.0,
+      "target_margin_pct": 0.295,
+      "floor_price_idr": 28700.0
+    },
+    {
+      "product_id": "P004",
+      "name": "Copper Sulphate",
+      "unit": "kg",
+      "cost_idr": 31500.0,
+      "list_price_idr": 37600.0,
+      "target_margin_pct": 0.195,
+      "floor_price_idr": 34000.0
+    },
+    {
+      "product_id": "P005",
+      "name": "Caustic Soda Flake",
+      "unit": "kg",
+      "cost_idr": 16500.0,
+      "list_price_idr": 18500.0,
+      "target_margin_pct": 0.124,
+      "floor_price_idr": 17800.0
+    },
+    {
+      "product_id": "P006",
+      "name": "Caustic Soda Pearl",
+      "unit": "kg",
+      "cost_idr": 10000.0,
+      "list_price_idr": 11900.0,
+      "target_margin_pct": 0.186,
+      "floor_price_idr": 10800.0
+    },
+    {
+      "product_id": "P007",
+      "name": "Caustic Soda Liquid",
+      "unit": "kg",
+      "cost_idr": 3800.0,
+      "list_price_idr": 4400.0,
+      "target_margin_pct": 0.146,
+      "floor_price_idr": 4100.0
+    },
+    {
+      "product_id": "P008",
+      "name": "Sulfuric Acid",
+      "unit": "kg",
+      "cost_idr": 23800.0,
+      "list_price_idr": 28700.0,
+      "target_margin_pct": 0.207,
+      "floor_price_idr": 25700.0
+    },
+    {
+      "product_id": "P009",
+      "name": "Hydrochloric Acid",
+      "unit": "kg",
+      "cost_idr": 10100.0,
+      "list_price_idr": 12100.0,
+      "target_margin_pct": 0.197,
+      "floor_price_idr": 10900.0
+    },
+    {
+      "product_id": "P010",
+      "name": "Sodium Metabisulfite",
+      "unit": "kg",
+      "cost_idr": 28900.0,
+      "list_price_idr": 34100.0,
+      "target_margin_pct": 0.181,
+      "floor_price_idr": 31200.0
+    },
+    {
+      "product_id": "P011",
+      "name": "Hydrogen Peroxide",
+      "unit": "kg",
+      "cost_idr": 28800.0,
+      "list_price_idr": 37400.0,
+      "target_margin_pct": 0.299,
+      "floor_price_idr": 31100.0
+    },
+    {
+      "product_id": "P012",
+      "name": "Sodium Isopropyl Xanthate (SIPX)",
+      "unit": "kg",
+      "cost_idr": 13900.0,
+      "list_price_idr": 16800.0,
+      "target_margin_pct": 0.206,
+      "floor_price_idr": 15000.0
+    },
+    {
+      "product_id": "P013",
+      "name": "Forged Grinding Balls",
+      "unit": "MT",
+      "cost_idr": 30737800.0,
+      "list_price_idr": 36900400.0,
+      "target_margin_pct": 0.2,
+      "floor_price_idr": 33196800.0
+    },
+    {
+      "product_id": "P014",
+      "name": "Cast Grinding Balls",
+      "unit": "MT",
+      "cost_idr": 5236000.0,
+      "list_price_idr": 6097400.0,
+      "target_margin_pct": 0.165,
+      "floor_price_idr": 5654900.0
+    },
+    {
+      "product_id": "P015",
+      "name": "Low Cement Castable",
+      "unit": "MT",
+      "cost_idr": 27501100.0,
+      "list_price_idr": 34116700.0,
+      "target_margin_pct": 0.241,
+      "floor_price_idr": 29701200.0
+    },
+    {
+      "product_id": "P016",
+      "name": "Electrode Paste",
+      "unit": "MT",
+      "cost_idr": 26310300.0,
+      "list_price_idr": 32539400.0,
+      "target_margin_pct": 0.237,
+      "floor_price_idr": 28415100.0
+    },
+    {
+      "product_id": "P017",
+      "name": "Graphite Electrode",
+      "unit": "MT",
+      "cost_idr": 18318700.0,
+      "list_price_idr": 23369100.0,
+      "target_margin_pct": 0.276,
+      "floor_price_idr": 19784200.0
+    },
+    {
+      "product_id": "P018",
+      "name": "Calcium Carbide",
+      "unit": "kg",
+      "cost_idr": 15100.0,
+      "list_price_idr": 18200.0,
+      "target_margin_pct": 0.208,
+      "floor_price_idr": 16300.0
+    },
+    {
+      "product_id": "P019",
+      "name": "Sulphur Granular",
+      "unit": "MT",
+      "cost_idr": 26967400.0,
+      "list_price_idr": 32872300.0,
+      "target_margin_pct": 0.219,
+      "floor_price_idr": 29124800.0
+    },
+    {
+      "product_id": "P020",
+      "name": "Aluminum Sulfate (Solid)",
+      "unit": "kg",
+      "cost_idr": 30600.0,
+      "list_price_idr": 36600.0,
+      "target_margin_pct": 0.195,
+      "floor_price_idr": 33000.0
+    },
+    {
+      "product_id": "P021",
+      "name": "Aluminum Sulfate Liquid",
+      "unit": "kg",
+      "cost_idr": 25500.0,
+      "list_price_idr": 28700.0,
+      "target_margin_pct": 0.126,
+      "floor_price_idr": 27500.0
+    },
+    {
+      "product_id": "P022",
+      "name": "Aluminum Powder",
+      "unit": "kg",
+      "cost_idr": 10300.0,
+      "list_price_idr": 11900.0,
+      "target_margin_pct": 0.158,
+      "floor_price_idr": 11100.0
+    },
+    {
+      "product_id": "P023",
+      "name": "Ferric Sulphate",
+      "unit": "kg",
+      "cost_idr": 5600.0,
+      "list_price_idr": 6400.0,
+      "target_margin_pct": 0.15,
+      "floor_price_idr": 6000.0
+    },
+    {
+      "product_id": "P024",
+      "name": "Ferrous Sulphate Heptahydrate",
+      "unit": "kg",
+      "cost_idr": 6200.0,
+      "list_price_idr": 7200.0,
+      "target_margin_pct": 0.156,
+      "floor_price_idr": 6700.0
+    },
+    {
+      "product_id": "P025",
+      "name": "Polymer PAM (Polyacrylamide)",
+      "unit": "kg",
+      "cost_idr": 23300.0,
+      "list_price_idr": 27200.0,
+      "target_margin_pct": 0.167,
+      "floor_price_idr": 25200.0
+    },
+    {
+      "product_id": "P026",
+      "name": "Ion Exchange Resin",
+      "unit": "L",
+      "cost_idr": 60200.0,
+      "list_price_idr": 69100.0,
+      "target_margin_pct": 0.147,
+      "floor_price_idr": 65000.0
+    },
+    {
+      "product_id": "P027",
+      "name": "Sodium Hydroxide Pearl",
+      "unit": "kg",
+      "cost_idr": 11500.0,
+      "list_price_idr": 14300.0,
+      "target_margin_pct": 0.242,
+      "floor_price_idr": 12400.0
+    },
+    {
+      "product_id": "P028",
+      "name": "Green Lixiviant",
+      "unit": "kg",
+      "cost_idr": 23700.0,
+      "list_price_idr": 30400.0,
+      "target_margin_pct": 0.284,
+      "floor_price_idr": 25600.0
+    },
+    {
+      "product_id": "P029",
+      "name": "CMC Fluorine Mitigation",
+      "unit": "kg",
+      "cost_idr": 8500.0,
+      "list_price_idr": 11100.0,
+      "target_margin_pct": 0.304,
+      "floor_price_idr": 9200.0
+    },
+    {
+      "product_id": "P030",
+      "name": "Retention Bentonite",
+      "unit": "kg",
+      "cost_idr": 8200.0,
+      "list_price_idr": 10500.0,
+      "target_margin_pct": 0.276,
+      "floor_price_idr": 8900.0
+    },
+    {
+      "product_id": "P031",
+      "name": "Special Bentonite",
+      "unit": "kg",
+      "cost_idr": 34700.0,
+      "list_price_idr": 46100.0,
+      "target_margin_pct": 0.328,
+      "floor_price_idr": 37500.0
+    },
+    {
+      "product_id": "P032",
+      "name": "Bulky Agent",
+      "unit": "kg",
+      "cost_idr": 20800.0,
+      "list_price_idr": 27800.0,
+      "target_margin_pct": 0.337,
+      "floor_price_idr": 22500.0
+    },
+    {
+      "product_id": "P033",
+      "name": "Micropolymer",
+      "unit": "kg",
+      "cost_idr": 30000.0,
+      "list_price_idr": 40700.0,
+      "target_margin_pct": 0.355,
+      "floor_price_idr": 32400.0
+    },
+    {
+      "product_id": "P034",
+      "name": "Retention Aid",
+      "unit": "kg",
+      "cost_idr": 10300.0,
+      "list_price_idr": 12400.0,
+      "target_margin_pct": 0.206,
+      "floor_price_idr": 11100.0
+    },
+    {
+      "product_id": "P035",
+      "name": "ASA Sizing Agent",
+      "unit": "kg",
+      "cost_idr": 13100.0,
+      "list_price_idr": 16400.0,
+      "target_margin_pct": 0.254,
+      "floor_price_idr": 14100.0
+    },
+    {
+      "product_id": "P036",
+      "name": "Optical Brightening Agent (OBA)",
+      "unit": "kg",
+      "cost_idr": 9800.0,
+      "list_price_idr": 13600.0,
+      "target_margin_pct": 0.389,
+      "floor_price_idr": 10600.0
+    },
+    {
+      "product_id": "P037",
+      "name": "Wet Strength Resin",
+      "unit": "kg",
+      "cost_idr": 31000.0,
+      "list_price_idr": 39200.0,
+      "target_margin_pct": 0.263,
+      "floor_price_idr": 33500.0
+    },
+    {
+      "product_id": "P038",
+      "name": "Dry Strength Resin",
+      "unit": "kg",
+      "cost_idr": 24000.0,
+      "list_price_idr": 30700.0,
+      "target_margin_pct": 0.279,
+      "floor_price_idr": 25900.0
+    },
+    {
+      "product_id": "P039",
+      "name": "Native Starch",
+      "unit": "MT",
+      "cost_idr": 29479200.0,
+      "list_price_idr": 38080400.0,
+      "target_margin_pct": 0.292,
+      "floor_price_idr": 31837500.0
+    },
+    {
+      "product_id": "P040",
+      "name": "Calcined Clay",
+      "unit": "MT",
+      "cost_idr": 10314000.0,
+      "list_price_idr": 12885500.0,
+      "target_margin_pct": 0.249,
+      "floor_price_idr": 11139100.0
+    },
+    {
+      "product_id": "P041",
+      "name": "Latex (Coating Binder)",
+      "unit": "kg",
+      "cost_idr": 21000.0,
+      "list_price_idr": 26300.0,
+      "target_margin_pct": 0.253,
+      "floor_price_idr": 22700.0
+    },
+    {
+      "product_id": "P042",
+      "name": "STARFIX Fixative",
+      "unit": "kg",
+      "cost_idr": 21700.0,
+      "list_price_idr": 29900.0,
+      "target_margin_pct": 0.38,
+      "floor_price_idr": 23400.0
+    },
+    {
+      "product_id": "P043",
+      "name": "White Limestone",
+      "unit": "MT",
+      "cost_idr": 14282300.0,
+      "list_price_idr": 16086400.0,
+      "target_margin_pct": 0.126,
+      "floor_price_idr": 15424900.0
+    },
+    {
+      "product_id": "P044",
+      "name": "Ground Limestone (Calcium Carbonate)",
+      "unit": "MT",
+      "cost_idr": 31927400.0,
+      "list_price_idr": 37072300.0,
+      "target_margin_pct": 0.161,
+      "floor_price_idr": 34481600.0
+    },
+    {
+      "product_id": "P045",
+      "name": "Crude Palm Oil (CPO)",
+      "unit": "MT",
+      "cost_idr": 5181800.0,
+      "list_price_idr": 5620800.0,
+      "target_margin_pct": 0.085,
+      "floor_price_idr": 5596300.0
+    },
+    {
+      "product_id": "P046",
+      "name": "Palm Kernel Expeller (PKE)",
+      "unit": "MT",
+      "cost_idr": 5734600.0,
+      "list_price_idr": 6553200.0,
+      "target_margin_pct": 0.143,
+      "floor_price_idr": 6193400.0
+    },
+    {
+      "product_id": "P047",
+      "name": "Palm Kernel Shell (PKS)",
+      "unit": "MT",
+      "cost_idr": 25866300.0,
+      "list_price_idr": 28291900.0,
+      "target_margin_pct": 0.094,
+      "floor_price_idr": 27935600.0
+    },
+    {
+      "product_id": "P048",
+      "name": "Organic Fertilizer",
+      "unit": "MT",
+      "cost_idr": 4374100.0,
+      "list_price_idr": 4891000.0,
+      "target_margin_pct": 0.118,
+      "floor_price_idr": 4724000.0
+    }
+  ]
+}

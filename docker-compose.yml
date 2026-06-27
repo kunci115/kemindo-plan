@@ -1,0 +1,19 @@
+services:
+  copilot:
+    build: .
+    image: kemindo-copilot:2.0.0
+    container_name: kemindo-copilot
+    env_file: .env
+    environment:
+      # dense bge load hits a torch meta-tensor bug on this image; BM25 fallback
+      # passes all retrieval evals. Flip to true once torch/ST combo is fixed.
+      ENABLE_DENSE_RETRIEVAL: "false"
+    ports:
+      - "8000:8000"
+    volumes:
+      # persist downloaded bge models across restarts (avoids re-download)
+      - model-cache:/models
+    restart: unless-stopped
+
+volumes:
+  model-cache:

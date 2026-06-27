@@ -1,0 +1,229 @@
+{
+  "_meta": {
+    "description": "DUMMY customers (names are real Indonesian industrial cos for realism; relationship/owner/credit data is fabricated).",
+    "data_source": "dummy (seeded)",
+    "generated": "2026-06-27"
+  },
+  "customers": [
+    {
+      "id": "C001",
+      "company_name": "PT Agincourt Resources",
+      "industry": "Gold Mine",
+      "location": "Batangtoru, Sumut",
+      "sales_owner": "Refriza H.",
+      "credit_term": "NET30",
+      "credit_limit_idr": 1000000000,
+      "tier": "A",
+      "ytd_revenue_idr": 6657000000
+    },
+    {
+      "id": "C002",
+      "company_name": "PT Bumi Suksesindo",
+      "industry": "Gold Mine",
+      "location": "Banyuwangi, Jatim",
+      "sales_owner": "Andi P.",
+      "credit_term": "NET30",
+      "credit_limit_idr": 200000000,
+      "tier": "A",
+      "ytd_revenue_idr": 2055000000
+    },
+    {
+      "id": "C003",
+      "company_name": "PT Nusa Halmahera Minerals",
+      "industry": "Gold Mine",
+      "location": "Halmahera, Malut",
+      "sales_owner": "Citra L.",
+      "credit_term": "NET90",
+      "credit_limit_idr": 200000000,
+      "tier": "B",
+      "ytd_revenue_idr": 3445000000
+    },
+    {
+      "id": "C004",
+      "company_name": "PT Vale Indonesia",
+      "industry": "Nickel",
+      "location": "Sorowako, Sulsel",
+      "sales_owner": "Eko W.",
+      "credit_term": "NET90",
+      "credit_limit_idr": 500000000,
+      "tier": "B",
+      "ytd_revenue_idr": 4099000000
+    },
+    {
+      "id": "C005",
+      "company_name": "PT IMIP (Indonesia Morowali)",
+      "industry": "Nickel",
+      "location": "Morowali, Sulteng",
+      "sales_owner": "Citra L.",
+      "credit_term": "NET30",
+      "credit_limit_idr": 500000000,
+      "tier": "A",
+      "ytd_revenue_idr": 7362000000
+    },
+    {
+      "id": "C006",
+      "company_name": "PT Huadi Nickel-Alloy",
+      "industry": "Nickel",
+      "location": "Bantaeng, Sulsel",
+      "sales_owner": "Refriza H.",
+      "credit_term": "NET60",
+      "credit_limit_idr": 500000000,
+      "tier": "A",
+      "ytd_revenue_idr": 6637000000
+    },
+    {
+      "id": "C007",
+      "company_name": "PT Indah Kiat Pulp & Paper",
+      "industry": "Paper",
+      "location": "Serang, Banten",
+      "sales_owner": "Eko W.",
+      "credit_term": "NET90",
+      "credit_limit_idr": 2500000000,
+      "tier": "A",
+      "ytd_revenue_idr": 4616000000
+    },
+    {
+      "id": "C008",
+      "company_name": "PT Pindo Deli Pulp & Paper",
+      "industry": "Paper",
+      "location": "Karawang, Jabar",
+      "sales_owner": "Andi P.",
+      "credit_term": "CBD",
+      "credit_limit_idr": 2500000000,
+      "tier": "A",
+      "ytd_revenue_idr": 6615000000
+    },
+    {
+      "id": "C009",
+      "company_name": "PT Fajar Surya Wisesa",
+      "industry": "Paper",
+      "location": "Bekasi, Jabar",
+      "sales_owner": "Citra L.",
+      "credit_term": "NET90",
+      "credit_limit_idr": 1000000000,
+      "tier": "B",
+      "ytd_revenue_idr": 5068000000
+    },
+    {
+      "id": "C010",
+      "company_name": "PT Tjiwi Kimia",
+      "industry": "Paper",
+      "location": "Mojokerto, Jatim",
+      "sales_owner": "Eko W.",
+      "credit_term": "NET90",
+      "credit_limit_idr": 2500000000,
+      "tier": "C",
+      "ytd_revenue_idr": 3702000000
+    },
+    {
+      "id": "C011",
+      "company_name": "PT Pabrik Kertas Tjiwi",
+      "industry": "Paper",
+      "location": "Sidoarjo, Jatim",
+      "sales_owner": "Andi P.",
+      "credit_term": "NET60",
+      "credit_limit_idr": 2500000000,
+      "tier": "B",
+      "ytd_revenue_idr": 6208000000
+    },
+    {
+      "id": "C012",
+      "company_name": "PT Antam Tbk (UBPP)",
+      "industry": "Gold Mine",
+      "location": "Pongkor, Jabar",
+      "sales_owner": "Andi P.",
+      "credit_term": "NET30",
+      "credit_limit_idr": 2500000000,
+      "tier": "A",
+      "ytd_revenue_idr": 2299000000
+    },
+    {
+      "id": "C013",
+      "company_name": "PT Weda Bay Nickel",
+      "industry": "Nickel",
+      "location": "Halmahera, Malut",
+      "sales_owner": "Citra L.",
+      "credit_term": "CBD",
+      "credit_limit_idr": 1000000000,
+      "tier": "A",
+      "ytd_revenue_idr": 2275000000
+    },
+    {
+      "id": "C014",
+      "company_name": "PT Smelting Gresik",
+      "industry": "Alumina Smelter",
+      "location": "Gresik, Jatim",
+      "sales_owner": "Budi S.",
+      "credit_term": "NET30",
+      "credit_limit_idr": 200000000,
+      "tier": "A",
+      "ytd_revenue_idr": 1285000000
+    },
+    {
+      "id": "C015",
+      "company_name": "PT Adaro Energy",
+      "industry": "Energy",
+      "location": "Tabalong, Kalsel",
+      "sales_owner": "Andi P.",
+      "credit_term": "NET60",
+      "credit_limit_idr": 500000000,
+      "tier": "A",
+      "ytd_revenue_idr": 576000000
+    },
+    {
+      "id": "C016",
+      "company_name": "PT Cargill Indonesia",
+      "industry": "Agriculture",
+      "location": "Pasuruan, Jatim",
+      "sales_owner": "Citra L.",
+      "credit_term": "NET60",
+      "credit_limit_idr": 1000000000,
+      "tier": "C",
+      "ytd_revenue_idr": 3866000000
+    },
+    {
+      "id": "C017",
+      "company_name": "PT Charoen Pokphand",
+      "industry": "Animal Feed",
+      "location": "Jakarta",
+      "sales_owner": "Citra L.",
+      "credit_term": "CBD",
+      "credit_limit_idr": 500000000,
+      "tier": "B",
+      "ytd_revenue_idr": 3240000000
+    },
+    {
+      "id": "C018",
+      "company_name": "PT Aneka Tambang Nickel",
+      "industry": "Nickel",
+      "location": "Kolaka, Sultra",
+      "sales_owner": "Dewi K.",
+      "credit_term": "CBD",
+      "credit_limit_idr": 2500000000,
+      "tier": "B",
+      "ytd_revenue_idr": 98000000
+    },
+    {
+      "id": "C019",
+      "company_name": "PT Merdeka Copper Gold",
+      "industry": "Gold Mine",
+      "location": "Banyuwangi, Jatim",
+      "sales_owner": "Budi S.",
+      "credit_term": "NET30",
+      "credit_limit_idr": 2500000000,
+      "tier": "B",
+      "ytd_revenue_idr": 4459000000
+    },
+    {
+      "id": "C020",
+      "company_name": "PT Kawasan Industri Terpadu",
+      "industry": "General",
+      "location": "Batam, Kepri",
+      "sales_owner": "Eko W.",
+      "credit_term": "NET90",
+      "credit_limit_idr": 500000000,
+      "tier": "B",
+      "ytd_revenue_idr": 1847000000
+    }
+  ]
+}

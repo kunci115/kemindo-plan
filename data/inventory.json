@@ -1,0 +1,936 @@
+{
+  "_meta": {
+    "description": "DUMMY stock per warehouse. NOT real.",
+    "data_source": "dummy (seeded)",
+    "generated": "2026-06-27"
+  },
+  "stock": [
+    {
+      "product_id": "P001",
+      "name": "Hydrated Lime",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P001",
+      "name": "Hydrated Lime",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P002",
+      "name": "Quick Lime",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P002",
+      "name": "Quick Lime",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P002",
+      "name": "Quick Lime",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P003",
+      "name": "Activated Carbon",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P004",
+      "name": "Copper Sulphate",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P004",
+      "name": "Copper Sulphate",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P004",
+      "name": "Copper Sulphate",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P005",
+      "name": "Caustic Soda Flake",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P006",
+      "name": "Caustic Soda Pearl",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P007",
+      "name": "Caustic Soda Liquid",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P007",
+      "name": "Caustic Soda Liquid",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P007",
+      "name": "Caustic Soda Liquid",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P008",
+      "name": "Sulfuric Acid",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P008",
+      "name": "Sulfuric Acid",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P008",
+      "name": "Sulfuric Acid",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P009",
+      "name": "Hydrochloric Acid",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P009",
+      "name": "Hydrochloric Acid",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P010",
+      "name": "Sodium Metabisulfite",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P010",
+      "name": "Sodium Metabisulfite",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P010",
+      "name": "Sodium Metabisulfite",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P011",
+      "name": "Hydrogen Peroxide",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P011",
+      "name": "Hydrogen Peroxide",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P012",
+      "name": "Sodium Isopropyl Xanthate (SIPX)",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P012",
+      "name": "Sodium Isopropyl Xanthate (SIPX)",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P012",
+      "name": "Sodium Isopropyl Xanthate (SIPX)",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P013",
+      "name": "Forged Grinding Balls",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 600,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P013",
+      "name": "Forged Grinding Balls",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P014",
+      "name": "Cast Grinding Balls",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 50,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P015",
+      "name": "Low Cement Castable",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P016",
+      "name": "Electrode Paste",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P016",
+      "name": "Electrode Paste",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P017",
+      "name": "Graphite Electrode",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 120,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P017",
+      "name": "Graphite Electrode",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 600,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P017",
+      "name": "Graphite Electrode",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 50,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P018",
+      "name": "Calcium Carbide",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P019",
+      "name": "Sulphur Granular",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 25,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P020",
+      "name": "Aluminum Sulfate (Solid)",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P020",
+      "name": "Aluminum Sulfate (Solid)",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P021",
+      "name": "Aluminum Sulfate Liquid",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P021",
+      "name": "Aluminum Sulfate Liquid",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P021",
+      "name": "Aluminum Sulfate Liquid",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P022",
+      "name": "Aluminum Powder",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P023",
+      "name": "Ferric Sulphate",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P023",
+      "name": "Ferric Sulphate",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P023",
+      "name": "Ferric Sulphate",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P024",
+      "name": "Ferrous Sulphate Heptahydrate",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P024",
+      "name": "Ferrous Sulphate Heptahydrate",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P024",
+      "name": "Ferrous Sulphate Heptahydrate",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P025",
+      "name": "Polymer PAM (Polyacrylamide)",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P025",
+      "name": "Polymer PAM (Polyacrylamide)",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P025",
+      "name": "Polymer PAM (Polyacrylamide)",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P026",
+      "name": "Ion Exchange Resin",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 1000,
+      "unit": "L",
+      "reorder_point": 20,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P027",
+      "name": "Sodium Hydroxide Pearl",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P028",
+      "name": "Green Lixiviant",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P028",
+      "name": "Green Lixiviant",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P029",
+      "name": "CMC Fluorine Mitigation",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P029",
+      "name": "CMC Fluorine Mitigation",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P030",
+      "name": "Retention Bentonite",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P030",
+      "name": "Retention Bentonite",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P031",
+      "name": "Special Bentonite",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P031",
+      "name": "Special Bentonite",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P031",
+      "name": "Special Bentonite",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P032",
+      "name": "Bulky Agent",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P032",
+      "name": "Bulky Agent",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P032",
+      "name": "Bulky Agent",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P033",
+      "name": "Micropolymer",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P034",
+      "name": "Retention Aid",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P034",
+      "name": "Retention Aid",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P034",
+      "name": "Retention Aid",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P035",
+      "name": "ASA Sizing Agent",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P035",
+      "name": "ASA Sizing Agent",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P035",
+      "name": "ASA Sizing Agent",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P036",
+      "name": "Optical Brightening Agent (OBA)",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 25000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P036",
+      "name": "Optical Brightening Agent (OBA)",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 60000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P037",
+      "name": "Wet Strength Resin",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P038",
+      "name": "Dry Strength Resin",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 500,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P038",
+      "name": "Dry Strength Resin",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 500,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P039",
+      "name": "Native Starch",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P040",
+      "name": "Calcined Clay",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 600,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P040",
+      "name": "Calcined Clay",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P041",
+      "name": "Latex (Coating Binder)",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P041",
+      "name": "Latex (Coating Binder)",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 1000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P041",
+      "name": "Latex (Coating Binder)",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P042",
+      "name": "STARFIX Fixative",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 8000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P042",
+      "name": "STARFIX Fixative",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 2000,
+      "unit": "kg",
+      "reorder_point": 5000,
+      "lead_time_days": 7
+    },
+    {
+      "product_id": "P043",
+      "name": "White Limestone",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P043",
+      "name": "White Limestone",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P044",
+      "name": "Ground Limestone (Calcium Carbonate)",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P044",
+      "name": "Ground Limestone (Calcium Carbonate)",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 120,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P044",
+      "name": "Ground Limestone (Calcium Carbonate)",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 600,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P045",
+      "name": "Crude Palm Oil (CPO)",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P045",
+      "name": "Crude Palm Oil (CPO)",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 50,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P046",
+      "name": "Palm Kernel Expeller (PKE)",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P046",
+      "name": "Palm Kernel Expeller (PKE)",
+      "warehouse": "WH-Batam",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 20,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P046",
+      "name": "Palm Kernel Expeller (PKE)",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 120,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P047",
+      "name": "Palm Kernel Shell (PKS)",
+      "warehouse": "WH-Jakarta",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 30
+    },
+    {
+      "product_id": "P047",
+      "name": "Palm Kernel Shell (PKS)",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 120,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 14
+    },
+    {
+      "product_id": "P047",
+      "name": "Palm Kernel Shell (PKS)",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 50,
+      "unit": "MT",
+      "reorder_point": 50,
+      "lead_time_days": 21
+    },
+    {
+      "product_id": "P048",
+      "name": "Organic Fertilizer",
+      "warehouse": "WH-Surabaya",
+      "qty_on_hand": 0,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 3
+    },
+    {
+      "product_id": "P048",
+      "name": "Organic Fertilizer",
+      "warehouse": "WH-Morowali",
+      "qty_on_hand": 25,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 45
+    },
+    {
+      "product_id": "P048",
+      "name": "Organic Fertilizer",
+      "warehouse": "WH-Sulut(Manado)",
+      "qty_on_hand": 300,
+      "unit": "MT",
+      "reorder_point": 100,
+      "lead_time_days": 14
+    }
+  ]
+}

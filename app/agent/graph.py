@@ -1,0 +1,96 @@
+"""LangGraph ReAct agent over DeepSeek + the deterministic tools.
+
+Exposes:
+- run(message): synchronous final answer + tool trace.
+- stream(message): yields trace events (for live UI showing the agent's work).
+"""
+from __future__ import annotations
+from typing import Any, Iterator
+from langchain_core.messages import HumanMessage, AIMessage
+from langgraph.prebuilt import create_react_agent
+from functools import lru_cache
+from ..llm import chat_model
+from .tools import ALL_TOOLS
+
+# how many prior turns to feed back as context (keeps tokens bounded)
+HISTORY_TURNS = 12
+
+SYSTEM = """You are the Kemindo Sales Engineer Copilot — an expert industrial
+chemical sales engineer assistant for Kemindo Group (chemicals for gold mining,
+nickel, paper, agriculture).
+
+Operating rules:
+1. ALWAYS ground product, dosage, price, inventory, and compatibility facts in
+   tool calls. Never invent numbers, prices, dosages, or stock.
+2. Map customer problems to real Kemindo products via search_product, and use
+   knowledge_lookup for technical root-cause. CITE the citations you receive.
+3. For chemicals, prefer calc_dosage / stoichiometry over estimating.
+4. Before recommending products stored/shipped together, call check_compatibility.
+5. For quotations, price each line with price_quote_line (respect margin floor
+   and surface required approvals). Use win_loss_hint to price competitively.
+6. Cross-sell: when relevant, suggest complementary products (knowledge base has
+   cross-sell logic), but only real catalog items.
+7. Be concise, technical, and honest. Always remind that dosages need
+   metallurgist + SDS validation. Answer in English.
+"""
+
+
+@lru_cache
+def _agent():
+    # langgraph 0.2.x uses `state_modifier` (a system prompt str/SystemMessage)
+    return create_react_agent(chat_model(), ALL_TOOLS, state_modifier=SYSTEM)
+
+
+def _to_lc(messages):
+    """Accept a plain string (single turn) or a list of {role, content} history
+    and return LangChain messages. Feeding history back gives the agent memory of
+    the quote/customer it just produced."""
+    if isinstance(messages, str):
+        return [HumanMessage(content=messages)]
+    out = []
+    for m in messages[-HISTORY_TURNS:]:
+        c = (m.get("content") or "").strip()
+        if not c:
+            continue
+        out.append(HumanMessage(content=c) if m.get("role") == "user" else AIMessage(content=c))
+    return out or [HumanMessage(content="(empty)")]
+
+
+def _payload(messages) -> dict[str, Any]:
+    return {"messages": _to_lc(messages)}
+
+
+def run(messages) -> dict[str, Any]:
+    result = _agent().invoke(_payload(messages))
+    msgs = result["messages"]
+    return {"answer": msgs[-1].content, "trace": _trace(msgs)}
+
+
+def stream(messages) -> Iterator[dict[str, Any]]:
+    """Yield {type, ...} events as the agent thinks/acts — drives the live UI.
+    `messages` is the full conversation history (list) or a single string."""
+    for chunk in _agent().stream(_payload(messages), stream_mode="updates"):
+        for node, payload in chunk.items():
+            for m in payload.get("messages", []):
+                tool_calls = getattr(m, "tool_calls", None)
+                if tool_calls:
+                    for tc in tool_calls:
+                        yield {"type": "tool_call", "tool": tc["name"], "args": tc["args"]}
+                elif m.__class__.__name__ == "ToolMessage":
+                    yield {"type": "tool_result", "tool": getattr(m, "name", "?"),
+                           "content": (m.content or "")[:1500]}
+                elif m.content:
+                    yield {"type": "assistant", "content": m.content}
+
+
+def _trace(msgs: list) -> list[dict[str, Any]]:
+    trace = []
+    for m in msgs:
+        tcs = getattr(m, "tool_calls", None)
+        if tcs:
+            for tc in tcs:
+                trace.append({"type": "tool_call", "tool": tc["name"], "args": tc["args"]})
+        elif m.__class__.__name__ == "ToolMessage":
+            trace.append({"type": "tool_result", "tool": getattr(m, "name", "?"),
+                          "content": (m.content or "")[:1500]})
+    return trace

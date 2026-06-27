@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.git/
+.github/
+.pytest_cache/
+.ruff_cache/
+*.md
+!data/knowledge/*.md
+.env
+.env.example
+models/
+.cache/

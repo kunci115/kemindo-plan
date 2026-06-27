@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "Golden eval set for the Sales Engineer Copilot. Two suites: deterministic retrieval checks (no LLM, fast, CI-gated) and LLM-judged answer-quality cases (need DEEPSEEK_API_KEY).",
+    "version": 1
+  },
+  "retrieval_cases": [
+    {"query": "gold recovery dropped in CIL circuit", "expect_product_ids_any": ["P001", "P003", "P002"], "expect_knowledge_contains": "pH"},
+    {"query": "cyanide detox effluent over limit", "expect_product_ids_any": ["P010", "P011"], "expect_knowledge_contains": "detox"},
+    {"query": "HPAL nickel leaching acid", "expect_product_ids_any": ["P008", "P019"], "expect_knowledge_contains": "HPAL"},
+    {"query": "paper brightness too low", "expect_product_ids_any": ["P036"], "expect_knowledge_contains": "OBA"},
+    {"query": "retention and drainage drop on paper machine", "expect_product_ids_any": ["P030", "P033", "P034"], "expect_knowledge_contains": "retention"},
+    {"query": "pitch and stickies deposits paper", "expect_product_ids_any": ["P031"], "expect_knowledge_contains": "stickies"},
+    {"query": "flocculant for tailings thickener", "expect_product_ids_any": ["P025"], "expect_knowledge_contains": null},
+    {"query": "grinding media for ball mill", "expect_product_ids_any": ["P013", "P014"], "expect_knowledge_contains": null}
+  ],
+  "engine_cases": [
+    {"name": "lime dosage scales with ore", "kind": "lime_ph", "value": 1000, "target_ph": 11.5, "expect_total_unit": "kg/day", "expect_dose_unit": "kg/t"},
+    {"name": "margin floor breach flags approval", "product_id": "P001", "qty": 20000, "discount_pct": 0.5, "expect_below_floor": true, "expect_approval_not_null": true},
+    {"name": "normal line within margin", "product_id": "P008", "qty": 50, "discount_pct": 0.0, "expect_below_floor": false},
+    {"name": "stoichiometry neutralization positive", "acid_kg": 100, "acid": "H2SO4", "base": "Ca(OH)2", "expect_base_positive": true},
+    {"name": "incompatible storage acid+base", "product_ids": ["P008", "P001"], "expect_unsafe": true}
+  ],
+  "answer_cases": [
+    {"id": "A1", "input": "Gold mine customer says recovery dropped. Recommend products and explain why, with dosage.",
+     "rubric": "Must recommend lime (pH) and/or activated carbon, give a dosage range with units, cite a knowledge source, and remind to validate with metallurgist."},
+    {"id": "A2", "input": "Customer wants 50 MT sulfuric acid for HPAL nickel, NET60. Give a quote with margin awareness.",
+     "rubric": "Must call pricing, report unit price + margin + any approval needed, mention HPAL acid context. Must NOT invent a price not from tools."},
+    {"id": "A3", "input": "Recommend storing copper sulphate together with caustic soda and calcium carbide in one warehouse.",
+     "rubric": "Must flag a compatibility/segregation concern (water-reactive calcium carbide) rather than blindly approving."}
+  ]
+}

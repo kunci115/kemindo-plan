@@ -1,0 +1,33 @@
+name: eval-gate
+on:
+  push:
+  pull_request:
+
+jobs:
+  deterministic-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install minimal deps (no heavy models)
+        run: pip install rank-bm25 python-dotenv numpy
+      - name: Run deterministic eval gate (retrieval + engines, BM25-only)
+        env:
+          ENABLE_DENSE_RETRIEVAL: "false"
+        run: python -m eval.run_eval --no-llm
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test deps
+        run: pip install rank-bm25 python-dotenv numpy fastapi pydantic "httpx<0.29" reportlab pytest
+      - name: Run pytest (quotation build/persist/PDF + API flow)
+        env:
+          ENABLE_DENSE_RETRIEVAL: "false"
+        run: python -m pytest tests/ -q
