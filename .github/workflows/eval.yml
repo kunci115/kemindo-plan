@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install test deps
-        run: pip install rank-bm25 python-dotenv numpy fastapi pydantic "httpx<0.29" reportlab pytest
+        run: pip install rank-bm25 python-dotenv numpy fastapi pydantic "httpx<0.29" python-multipart reportlab pytest
       - name: Run pytest (quotation build/persist/PDF + API flow)
         env:
           ENABLE_DENSE_RETRIEVAL: "false"
