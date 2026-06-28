@@ -1,12 +1,23 @@
 <div align="center">
 
-# Kemindo Sales Engineer Copilot
+# Kemindo Industrial Intelligence Platform
 
-**Turn a customer problem or a messy RFQ into a technically-grounded, margin-guarded, downloadable quotation — with cited reasoning.**
+**A two-tier AI for Kemindo Group — a public Solution Advisor that turns visitor problems into qualified leads, and an internal Sales Engineer Copilot that turns RFQs into technically-grounded, margin-guarded, downloadable quotations.**
 
 `DeepSeek` · `LangGraph` · `FastAPI` · deterministic chemical & pricing engines · local hybrid retrieval
 
 </div>
+
+---
+
+## Two products, one platform
+
+| Tier | Who | Does | Sees pricing/margin? | URL |
+|---|---|---|---|---|
+| **Solution Advisor** (external) | Customers / prospects | Product + technical guidance, company profile, **captures the inquiry as a lead** | ❌ never | `/advisor` |
+| **Sales Engineer Copilot** (internal) | Kemindo sales staff | RFQ → product match → dosage → stock → **margin-guarded quotation + PDF** | ✅ full | `/` |
+
+**The funnel:** customer asks on the web → Advisor solves + captures a lead → sales engineer turns it into a quote → deal. One codebase, two agents, two faces.
 
 ---
 
@@ -36,7 +47,9 @@ This copilot does it in **minutes** — and increases revenue on four levers:
 | **Compatibility / safety check** | Hazard-class segregation (oxidizer+flammable, acid+base…) before co-storage |
 | **Hybrid retrieval + citations** | BM25 + dense + reranker (RRF) — every product, dosage, and fact is **cited to its source** |
 | **Margin decision engine** | Floor margin, volume/payment tiers, approval routing — *LLM proposes, rules dispose* |
+| **Deterministic numbers** | Unit conversion (e.g. 50 MT → 50,000 kg), pricing, dosage all computed by engines; the agent presents a **canonical summary verbatim** — chat figures always equal the quote/PDF |
 | **Quotation + PDF** | Persisted, numbered quote → **branded PDF** (Kemindo letterhead) one click away |
+| **External advisor + lead capture** | Public agent answers customers without exposing pricing, and files inquiries to `/leads` for sales follow-up |
 | **Conversation memory** | Remembers the quote/customer across turns ("draft an email for this quote" just works) |
 | **Architecture graph** | Interactive system map at **`/graph`** for presentations |
 | **Eval harness + CI** | Golden set: retrieval + engines (deterministic gate) + LLM-judged answers. **Measured, not vibes** |
@@ -50,7 +63,9 @@ This copilot does it in **minutes** — and increases revenue on four levers:
 ```bash
 cp .env.example .env        # put your DEEPSEEK_API_KEY in .env
 docker compose up -d --build
-# open http://127.0.0.1:8000     (architecture map: http://127.0.0.1:8000/graph)
+# internal Copilot : http://127.0.0.1:8000
+# external Advisor : http://127.0.0.1:8000/advisor
+# architecture map : http://127.0.0.1:8000/graph
 ```
 
 Health check: `curl http://127.0.0.1:8000/health`
@@ -72,6 +87,9 @@ Watches the agent (right "audit" panel) call tools → product match, dosage, in
 **4 — Audit trail**
 > Every number in the answer traces to a tool call in the right panel → it's auditable, not a black box.
 
+**5 — External Advisor → lead → quote (the funnel)**
+> At `/advisor` (as a customer): *"My gold recovery dropped, what do you recommend?"* → solution + citations, **no prices**. Then *"I'd like a quotation — I'm Budi from PT Vale, budi@vale.example"* → it captures the lead. Switch to the internal Copilot → the sales engineer turns that lead into a quote.
+
 ---
 
 ## Architecture
@@ -79,9 +97,11 @@ Watches the agent (right "audit" panel) call tools → product match, dosage, in
 Interactive map: **`/graph`** (Cytoscape — click nodes, drag, zoom).
 
 ```
- Sales Engineer ──(NL or RFQ upload)──► Orchestrator Agent  (LangGraph ReAct · DeepSeek)
-                                              │  tool calls + conversation memory
-        ┌───────────────┬───────────────┬─────┴─────────┬────────────────┐
+ Customer ─► Solution Advisor (external)            Sales Engineer ─► Sales Copilot (internal)
+                 │  no pricing/stock                      │  full tools + memory
+            capture_lead ─► leads store ─────────────────►│
+                                                          ▼
+        ┌───────────────┬───────────────┬────────────────┬────────────────┐
    search_product   calc_dosage    check_inventory  price_quote_line  build_quotation  (+4 more)
         │               │               │               │                │
    Hybrid Retrieval  Chemistry      data_store      Pricing/Decision   Quotation+PDF
@@ -90,7 +110,7 @@ Interactive map: **`/graph`** (Cytoscape — click nodes, drag, zoom).
                          data/*.json (real catalog + dummy internal) · knowledge/*.md
 ```
 
-**Honest scope:** this is **one orchestrator agent + 9 tools**, not a multi-agent mesh. Future agents (procurement, logistics, executive, email) are shown **dashed** on `/graph` — planned, not built.
+**Honest scope:** two ReAct agents (external Advisor + internal Copilot) sharing the same tools/engines — **not** a large multi-agent mesh. Further agents (procurement, logistics, executive, email) are shown **dashed** on `/graph` — planned, not built.
 
 ---
 
@@ -108,7 +128,7 @@ Interactive map: **`/graph`** (Cytoscape — click nodes, drag, zoom).
 ## Tests & eval
 
 ```bash
-pytest tests/ -q                    # 10/10 — quotation, API flow, conversations, ingest, architecture
+pytest tests/ -q                    # 13/13 — quotation+unit-conversion, API flow, conversations, ingest, advisor/leads, architecture
 python -m eval.run_eval --no-llm    # deterministic gate: retrieval 8/8 + engines 5/5
 python -m eval.run_eval             # + LLM-judged answer quality (needs API key)
 ```
@@ -121,16 +141,16 @@ CI runs the deterministic gate + unit tests on every push ([.github/workflows/ev
 
 ```
 app/
-  api.py              FastAPI + SSE streaming + endpoints
-  agent/              tools.py (9 tools) + graph.py (LangGraph ReAct, memory)
-  reasoning/          chemistry · compatibility · pricing   (deterministic)
+  api.py              FastAPI + SSE streaming + endpoints (copilot, advisor, leads, quotation, graph)
+  agent/              tools.py (internal + external toolsets) + graph.py (two ReAct agents, memory)
+  reasoning/          chemistry · compatibility · pricing (unit conversion, margin)  (deterministic)
   retrieval/          hybrid.py (BM25 + dense + reranker, cited)
   ingest/             multimodal RFQ → structured (auto-chain)
-  quotation.py        quote build + reportlab PDF
-  store_*.py          conversations + quotations persistence
-  architecture.py     /graph data
-  web/                index.html (chat UI) + graph.html (architecture)
-data/                 hybrid dataset (real catalog + dummy internal) + knowledge/  (see data/README.md)
+  quotation.py        quote build + canonical summary + reportlab PDF
+  store_*.py          conversations · quotations · leads persistence
+  architecture.py     /graph data (two-tier)
+  web/                index.html (internal) · advisor.html (external) · graph.html (architecture)
+data/                 hybrid dataset (real catalog + dummy internal) + knowledge/ (incl. company_profile.md)
 eval/                 golden_set.json + run_eval.py
 tests/                pytest suite
 samples/              sample RFQ files for the upload demo
@@ -144,12 +164,12 @@ archive/              superseded v1 design docs
 
 | Built & running | Planned (roadmap) |
 |---|---|
-| Agent + 9 tools, memory, citations | Multi-user auth + RBAC |
-| Chemical / compatibility / pricing engines | Approval workflow (quote state machine) |
-| Hybrid retrieval (BM25 active; dense pending a torch fix) | Email draft + SMTP send |
-| Quotation persistence + branded PDF | ERP / CRM integration (replace dummy data) |
-| Conversation history + enterprise UI | Procurement / logistics / executive agents |
-| Multimodal ingest + auto-chain | |
-| Architecture graph · eval harness · CI | |
+| Internal Copilot: agent + 9 tools, memory, citations | Multi-user auth + RBAC |
+| External Advisor + lead capture (`/advisor`, `/leads`) | Approval workflow (quote state machine) |
+| Chemical / compatibility / pricing engines (+ unit conversion) | Email draft + SMTP send |
+| Quotation persistence + branded PDF + canonical summary | ERP / CRM integration (replace dummy data) |
+| Hybrid retrieval (BM25 active; dense pending a torch fix) | Procurement / logistics / executive agents |
+| Conversation history + enterprise UI | Auto-route a captured lead into a quote |
+| Multimodal ingest + auto-chain · architecture graph · eval + CI | |
 
 > Dataset note: catalog names/brands are **real** (scraped from Kemindo sites); prices, stock, and RFQ history are **realistic dummy** — swap for ERP data before production. Details in [data/README.md](data/README.md).
