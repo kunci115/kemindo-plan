@@ -96,7 +96,7 @@ Watches the agent (right "audit" panel) call tools → product match, dosage, in
 
 ## Architecture
 
-Interactive map: **`/graph`** (Cytoscape — click nodes, drag, zoom).
+Full technical write-up (C4 + sequence diagrams + decisions): **[ARCHITECTURE.md](ARCHITECTURE.md)**. Interactive map: **`/graph`** (Cytoscape — click nodes, drag, zoom).
 
 ```
  Customer ─► Solution Advisor (external)            Sales Engineer ─► Sales Copilot (internal)
