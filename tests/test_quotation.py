@@ -32,6 +32,16 @@ def test_margin_guard_flags_approval():
     assert q["approval_required"] is not None
 
 
+def test_unit_conversion_mt_to_kg():
+    # P008 is priced per kg; "50 MT" must become 50,000 kg, not 50 kg (1000x bug)
+    q_kg = build_quotation("PT A", [{"product_id": "P008", "qty": 50, "unit": "kg"}])
+    q_mt = build_quotation("PT B", [{"product_id": "P008", "qty": 50, "unit": "MT"}])
+    assert q_mt["lines"][0]["qty"] == 50000
+    assert q_mt["subtotal_idr"] == q_kg["subtotal_idr"] * 1000
+    # canonical summary present for the agent to echo verbatim
+    assert "Subtotal" in q_mt["summary_markdown"]
+
+
 def test_pdf_is_valid_bytes():
     q = build_quotation("PT Agincourt Resources",
                         [{"product_id": "P001", "qty": 20},

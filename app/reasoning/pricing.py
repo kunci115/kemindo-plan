@@ -42,12 +42,36 @@ def _volume_discount(qty: float, typical: float, tiers: list[dict]) -> float:
     return disc
 
 
+# mass units relative to kg; converts a customer-stated unit to the product's unit
+_MASS = {"kg": 1.0, "g": 0.001, "mg": 1e-6, "mt": 1000.0, "ton": 1000.0,
+         "tonne": 1000.0, "t": 1000.0}
+
+
+def _to_product_qty(qty: float, unit: str | None, product_unit: str) -> tuple[float, str | None]:
+    """Convert qty in a customer unit to the product's catalog unit (deterministic).
+    Returns (converted_qty, note). Prevents the 1000x under/over-quote when the
+    customer says 'MT' but the product is priced per kg."""
+    if not unit:
+        return qty, None
+    u, p = unit.strip().lower(), product_unit.strip().lower()
+    if u == p:
+        return qty, None
+    if u in _MASS and p in _MASS:
+        conv = qty * _MASS[u] / _MASS[p]
+        return conv, f"Converted {qty:g} {unit} -> {conv:g} {product_unit}."
+    # incompatible (e.g. L vs MT): keep qty, flag for review
+    return qty, f"Unit '{unit}' not convertible to product unit '{product_unit}' — verify quantity."
+
+
 def quote_line(product_id: str, qty: float, requested_discount_pct: float = 0.0,
-               payment_term: str = "NET30", typical_qty: float | None = None) -> PriceDecision:
+               payment_term: str = "NET30", typical_qty: float | None = None,
+               unit: str | None = None) -> PriceDecision:
     store = get_store()
     price = store.price_by_id[product_id]
     prod = store.product_by_id[product_id]
     rules = store.margin_rules
+
+    qty, conv_note = _to_product_qty(qty, unit, prod["unit"])
 
     list_price = price["list_price_idr"]
     cost = price["cost_idr"]
@@ -72,6 +96,8 @@ def quote_line(product_id: str, qty: float, requested_discount_pct: float = 0.0,
         flags.append(f"Unit price below floor (Rp{floor:,.0f}).")
     if vol_disc > requested_discount_pct:
         flags.append(f"Auto volume discount {vol_disc:.0%} applied (qty {qty:g} vs typical {typ:g}).")
+    if conv_note:
+        flags.append(conv_note)
 
     approval = _approval(margin, disc, line_total, rules)
     if approval:

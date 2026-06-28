@@ -79,13 +79,14 @@ def check_inventory(product_id: str) -> str:
 
 
 @tool
-def price_quote_line(product_id: str, qty: float, discount_pct: float = 0.0,
-                     payment_term: str = "NET30") -> str:
-    """Price one line with margin guardrail. Returns unit price, margin, floor
-    breach flag, and required approval level. The LLM may PROPOSE a discount but
-    this engine enforces the rules."""
+def price_quote_line(product_id: str, qty: float, unit: str | None = None,
+                     discount_pct: float = 0.0, payment_term: str = "NET30") -> str:
+    """Price one line with margin guardrail. ALWAYS pass `unit` exactly as the
+    customer stated it (e.g. "MT", "kg", "ton") — the engine converts to the
+    product's catalog unit deterministically, so never pre-convert yourself.
+    Returns unit price, margin, floor-breach flag, and required approval level."""
     try:
-        return json.dumps(pricing.quote_line(product_id, qty, discount_pct, payment_term).dict())
+        return json.dumps(pricing.quote_line(product_id, qty, discount_pct, payment_term, unit=unit).dict())
     except KeyError:
         return json.dumps({"error": f"no price for {product_id}"})
 
@@ -100,8 +101,11 @@ def win_loss_hint(product_id: str) -> str:
 @tool
 def build_quotation(customer_name: str, lines: list[dict], payment_term: str = "NET30",
                     incoterm: str = "EXW Warehouse") -> str:
-    """Assemble a full quotation. lines = [{"product_id","qty","discount_pct"?}].
-    Returns quotation object with subtotal + overall approval requirement."""
+    """Assemble a full quotation. lines = [{"product_id","qty","unit","discount_pct"?}].
+    ALWAYS include "unit" exactly as the customer stated (e.g. "MT") — the engine
+    converts to the catalog unit; do NOT pre-convert quantities.
+    The result includes `summary_markdown`: present THAT to the user verbatim and
+    do not restate or recompute any numbers (quantity, price, total, approval)."""
     return json.dumps(_build_quote(customer_name, lines, payment_term, incoterm),
                       ensure_ascii=False)
 

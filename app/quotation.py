@@ -28,7 +28,8 @@ def build_quotation(customer_name: str, lines: list[dict[str, Any]],
     order = [None, "Sales Manager", "Commercial Director"]
     for ln in lines:
         d = quote_line(ln["product_id"], ln["qty"],
-                       ln.get("discount_pct", 0.0), payment_term)
+                       ln.get("discount_pct", 0.0), payment_term,
+                       unit=ln.get("unit"))
         decided.append(d.dict())
         total += d.line_total
         if order.index(d.approval_required) > order.index(max_approval):
@@ -49,7 +50,22 @@ def build_quotation(customer_name: str, lines: list[dict[str, Any]],
         "disclaimer": "Demo prices (dummy dataset). Dosage/spec must be validated "
                       "with metallurgist + SDS before field use.",
     }
+    # canonical summary the agent must present verbatim (prevents prose drift)
+    quote["summary_markdown"] = _summary_md(quote)
     return save_quotation(quote)
+
+
+def _summary_md(q: dict[str, Any]) -> str:
+    rows = ["| # | Product | Qty | Unit Price (IDR) | Line Total (IDR) | Margin |",
+            "|---|---------|-----|------------------|------------------|--------|"]
+    for i, ln in enumerate(q["lines"], 1):
+        rows.append(f"| {i} | {ln['name']} | {ln['qty']:g} {ln['unit']} | "
+                    f"{ln['unit_price']:,.0f} | {ln['line_total']:,.0f} | {ln['margin_pct']:.1%} |")
+    appr = q["approval_required"] or "None (auto-approve)"
+    return ("\n".join(rows) +
+            f"\n\n**Subtotal: Rp {q['subtotal_idr']:,.0f}** · Terms {q['payment_term']} · "
+            f"{q['incoterm']} · valid {q['validity_days']} days\n\n"
+            f"**Approval required:** {appr} · Quotation **{q['quotation_no']}** (DRAFT)")
 
 
 def render_quotation_text(q: dict[str, Any]) -> str:
