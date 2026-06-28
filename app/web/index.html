@@ -135,6 +135,9 @@
   <main class="main">
     <div class="top">
       <div class="title" id="convTitle">New conversation</div>
+      <select id="lang" class="tg" style="cursor:pointer" title="Language" onchange="setLang(this.value)">
+        <option value="en">EN</option><option value="id">ID</option>
+      </select>
       <span class="chip" id="health">…</span>
       <a class="tg" href="/advisor" style="text-decoration:none" title="Customer-facing Solution Advisor">🌐 Customer Advisor</a>
       <a class="tg" href="/graph" style="text-decoration:none" title="System architecture graph">⬡ Architecture</a>
@@ -170,6 +173,38 @@ const sendBtn=document.getElementById('send'),ta=document.getElementById('m');
 let session=localStorage.getItem('kmd_session')||null;
 let activeQuote=null;   // last quotation in this session -> keeps chip context
 let busy=false;
+let lang=localStorage.getItem('kmd_lang')||'en';
+
+const I18N={
+  en:{placeholder:'Describe the customer problem or paste an RFQ…',send:'Send',
+    suggested:'Suggested next steps',
+    welcome:'Hi — describe a customer problem or paste an RFQ. I will recommend products with dosages, check stock, price with margin guardrails, generate a downloadable quotation, and cite every source.',
+    hints:['Gold mine customer: recovery dropped — recommend reagents with dosage, check stock',
+           'HPAL nickel plant, 5000 t/day ore — what acid + how much?',
+           'Build a quotation: 20 MT hydrated lime for PT Agincourt, NET60'],
+    quote:['Apply a 5% discount and re-check the margin','Draft a customer email for this quotation',
+           'Add a complementary cross-sell product','Suggest a cheaper alternative for the lowest-margin item'],
+    general:['Build a quotation for these products','Check stock and lead time for these items',
+             'Suggest complementary products to cross-sell','Give the recommended dosage for each']},
+  id:{placeholder:'Jelaskan masalah customer atau tempel RFQ…',send:'Kirim',
+    suggested:'Saran langkah berikutnya',
+    welcome:'Halo — jelaskan masalah customer atau tempel RFQ. Saya akan rekomendasikan produk + dosis, cek stok, hitung harga dengan batas margin, buat quotation yang bisa diunduh, dan mencantumkan sumbernya.',
+    hints:['Customer tambang emas: recovery turun — rekomendasi reagent + dosis, cek stok',
+           'Pabrik nikel HPAL, 5000 ton/hari bijih — asam apa + berapa?',
+           'Buatkan quotation: 20 MT hydrated lime untuk PT Agincourt, NET60'],
+    quote:['Beri diskon 5% dan cek ulang margin','Buatkan draft email ke customer untuk quotation ini',
+           'Tambahkan produk cross-sell pelengkap','Sarankan alternatif lebih murah untuk item margin terendah'],
+    general:['Buatkan quotation untuk produk ini','Cek stok dan lead time item ini',
+             'Sarankan produk pelengkap untuk cross-sell','Berikan dosis yang direkomendasikan tiap item']}
+};
+const t=()=>I18N[lang]||I18N.en;
+function setLang(v){lang=v;localStorage.setItem('kmd_lang',v);applyI18n();}
+function applyI18n(){const L=t();
+  document.getElementById('lang').value=lang;
+  document.getElementById('m').placeholder=L.placeholder;
+  sendBtn.textContent=L.send;
+  const hb=document.querySelectorAll('#hints .hint');
+  L.hints.forEach((h,i)=>{if(hb[i])hb[i].textContent=h;});}
 
 // textarea auto-grow + enter-to-send
 ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,140)+'px';});
@@ -220,7 +255,7 @@ async function openConv(id){const r=await fetch('/conversation/'+id);if(!r.ok)re
 function newChat(){session=null;activeQuote=null;localStorage.removeItem('kmd_session');feed.innerHTML='';
   document.getElementById('convTitle').textContent='New conversation';
   clearTrace('Every product, price, dosage, and stock figure is produced by a tool call — shown here for full auditability.');
-  rowEl('bot').innerHTML='<p>Hi — describe a customer problem or paste an RFQ. I will recommend products with dosages, check stock, price with margin guardrails, generate a downloadable quotation, and cite every source.</p>';
+  rowEl('bot').innerHTML='<p>'+t().welcome+'</p>';
   loadConvs();ta.focus();}
 
 // ---- send (NL everywhere; label lets uploads show a clean bubble) ----
@@ -231,7 +266,7 @@ async function sendMessage(text,label){if(busy)return;busy=true;sendBtn.disabled
   const card=rowEl('bot');card.classList.add('cursor');let acc='',quoteNo=null;
   try{
     const res=await fetch('/chat/stream',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message:text,session_id:session})});
+      body:JSON.stringify({message:text,session_id:session,lang:lang})});
     const rd=res.body.getReader();const dec=new TextDecoder();let buf='';
     while(true){const{done,value}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});
       let i;while((i=buf.indexOf('\n\n'))>=0){const line=buf.slice(0,i);buf=buf.slice(i+2);
@@ -250,17 +285,9 @@ async function sendMessage(text,label){if(busy)return;busy=true;sendBtn.disabled
 
 // app proposes the next natural-language action — user clicks instead of typing
 function suggestChips(card,quoteNo){
-  const opts = quoteNo
-    ? ["Apply a 5% discount and re-check the margin",
-       "Draft a customer email for this quotation",
-       "Add a complementary cross-sell product",
-       "Suggest a cheaper alternative for the lowest-margin item"]
-    : ["Build a quotation for these products",
-       "Check stock and lead time for these items",
-       "Suggest complementary products to cross-sell",
-       "Give the recommended dosage for each"];
+  const opts = quoteNo ? t().quote : t().general;
   const bar=document.createElement('div');bar.className='suggest';
-  bar.innerHTML='<div class="sg-l">Suggested next steps</div>';
+  bar.innerHTML='<div class="sg-l">'+t().suggested+'</div>';
   opts.forEach(t=>{const b=document.createElement('button');b.className='sg';b.textContent=t;
     b.onclick=()=>sendMessage(t);bar.appendChild(b);});
   card.appendChild(bar);feed.scrollTop=feed.scrollHeight;}
@@ -283,6 +310,7 @@ fetch('/health').then(r=>r.json()).then(h=>{document.getElementById('health').te
   (h.llm_configured?'LLM ✓':'no API key')+' · '+h.products+' products · '+(h.dense_retrieval?'hybrid':'bm25');});
 
 // boot
+applyI18n();
 loadConvs();
 if(session)openConv(session);else newChat();
 </script>

@@ -19,6 +19,7 @@ if ASSETS.exists():
 class ChatIn(BaseModel):
     message: str
     session_id: str | None = None
+    lang: str | None = None   # "id" | "en" | None(auto-match user)
 
 
 class QuoteLine(BaseModel):
@@ -83,7 +84,7 @@ def advisor_stream(body: ChatIn):
     def gen():
         yield f"data: {json.dumps({'type': 'session', 'session_id': sid})}\n\n"
         answer = ""
-        for ev in stream(history, advisor=True):
+        for ev in stream(history, advisor=True, lang=body.lang):
             if ev.get("type") == "assistant":
                 answer = ev.get("content", "")
             yield f"data: {json.dumps(ev, ensure_ascii=False)}\n\n"
@@ -120,7 +121,7 @@ def chat_stream(body: ChatIn):
     def gen():
         yield f"data: {json.dumps({'type': 'session', 'session_id': sid})}\n\n"
         answer, trace = "", []
-        for ev in stream(history):
+        for ev in stream(history, lang=body.lang):
             if ev.get("type") == "assistant":
                 answer = ev.get("content", "")
             elif ev.get("type") in ("tool_call", "tool_result"):

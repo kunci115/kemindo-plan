@@ -57,7 +57,10 @@
   <img src="/assets/kemindo.png"/>
   <div class="t"><b>Solution Advisor</b><span>Your Solution Partner® — chemicals, mining, paper, nickel, energy</span></div>
   <div class="grow"></div>
-  <span class="spec">Talk to a specialist</span>
+  <select id="lang" onchange="setLang(this.value)" style="border:1px solid var(--line);border-radius:20px;padding:6px 10px;font:inherit;font-size:12.5px;color:#3d4860;cursor:pointer;margin-right:10px">
+    <option value="en">EN</option><option value="id">ID</option>
+  </select>
+  <span class="spec" id="spec">Talk to a specialist</span>
 </header>
 <div class="stage"><div class="col" id="col">
   <div class="hero" id="hero">
@@ -83,6 +86,34 @@
 marked.setOptions({breaks:true,gfm:true});
 const col=document.getElementById('col'),input=document.getElementById('m'),sendBtn=document.getElementById('send');
 let session=null,busy=false;
+let lang=localStorage.getItem('kmd_lang')||'en';
+
+const I18N={
+  en:{spec:'Talk to a specialist',send:'Send',
+    placeholder:'Describe your need, or ask about our products and company…',
+    h1:'How can we help your operation?',
+    p:"Describe your process challenge — gold recovery, paper brightness, nickel reagents, water treatment — and we'll recommend the right Kemindo solution and connect you with a specialist.",
+    foot:'Kemindo Solution Advisor provides product & technical guidance. Pricing and formal quotations are prepared by our sales team.',
+    toast:'Your inquiry has been sent to our sales team — a specialist will contact you.',
+    cats:['My gold recovery has dropped — what do you recommend?','I need chemicals for a paper mill (brightness/retention)',
+          'Reagents for HPAL nickel processing','Tell me about Kemindo Group',"I'd like a quotation"]},
+  id:{spec:'Hubungi spesialis',send:'Kirim',
+    placeholder:'Jelaskan kebutuhan Anda, atau tanya produk & perusahaan kami…',
+    h1:'Apa yang bisa kami bantu untuk operasi Anda?',
+    p:'Jelaskan tantangan proses Anda — recovery emas, brightness kertas, reagent nikel, water treatment — dan kami rekomendasikan solusi Kemindo yang tepat serta menghubungkan Anda dengan spesialis.',
+    foot:'Kemindo Solution Advisor memberi panduan produk & teknis. Harga dan quotation resmi disiapkan tim sales kami.',
+    toast:'Inquiry Anda sudah dikirim ke tim sales — spesialis kami akan menghubungi Anda.',
+    cats:['Recovery emas saya turun — apa rekomendasinya?','Saya butuh chemical untuk pabrik kertas (brightness/retention)',
+          'Reagent untuk proses nikel HPAL','Ceritakan tentang Kemindo Group','Saya ingin minta penawaran']}
+};
+const T=()=>I18N[lang]||I18N.en;
+function setLang(v){lang=v;localStorage.setItem('kmd_lang',v);applyI18n();}
+function applyI18n(){const L=T();document.getElementById('lang').value=lang;
+  document.getElementById('spec').textContent=L.spec;sendBtn.textContent=L.send;input.placeholder=L.placeholder;
+  const h1=document.querySelector('#hero h1'),p=document.querySelector('#hero p');
+  if(h1)h1.textContent=L.h1;if(p)p.textContent=L.p;
+  document.querySelectorAll('#hero .cats b').forEach((b,i)=>{if(L.cats[i])b.textContent=L.cats[i];});
+  const f=document.querySelector('.foot');if(f)f.textContent=L.foot;}
 input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
 function ask(e){input.value=e.textContent;send();}
 function row(role){const r=document.createElement('div');r.className='row '+(role==='me'?'me':'');
@@ -98,7 +129,7 @@ async function send(){if(busy)return;const text=input.value.trim();if(!text)retu
   const card=row('bot');card.classList.add('cursor');let acc='',lead=false;
   try{
     const res=await fetch('/advisor/chat/stream',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message:text,session_id:session})});
+      body:JSON.stringify({message:text,session_id:session,lang:lang})});
     const rd=res.body.getReader();const dec=new TextDecoder();let buf='';
     while(true){const{done,value}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});
       let i;while((i=buf.indexOf('\n\n'))>=0){const line=buf.slice(0,i);buf=buf.slice(i+2);
@@ -109,8 +140,9 @@ async function send(){if(busy)return;const text=input.value.trim();if(!text)retu
       }}
   }catch(err){acc+='\n\n*Sorry, something went wrong: '+err.message+'*';setMd(card,acc);}
   card.classList.remove('cursor');setMd(card,acc);
-  if(lead)toast('Your inquiry has been sent to our sales team — a specialist will contact you.');
+  if(lead)toast(T().toast);
   busy=false;sendBtn.disabled=false;}
+applyI18n();
 </script>
 </body>
 </html>

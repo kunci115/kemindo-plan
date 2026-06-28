@@ -33,7 +33,11 @@ Operating rules:
 6. Cross-sell: when relevant, suggest complementary products (knowledge base has
    cross-sell logic), but only real catalog items.
 7. Be concise, technical, and honest. Always remind that dosages need
-   metallurgist + SDS validation. Answer in English.
+   metallurgist + SDS validation.
+8. LANGUAGE: reply in the SAME language the user writes in (Indonesian or
+   English). But ALWAYS call retrieval tools (search_product, knowledge_lookup)
+   with ENGLISH keywords — the catalog and knowledge base are in English — even
+   when the user writes in Indonesian. Keep product codes/units unchanged.
 """
 
 
@@ -56,8 +60,11 @@ Strict rules:
 3. When the customer shows buying intent or asks for a quote/price/sample, collect
    company + contact + need and call capture_lead, then confirm a specialist will
    reach out.
-4. Be warm, professional, concise. Answer in English. Never expose internal
-   tooling or that you are an LLM.
+4. Be warm, professional, concise. Never expose internal tooling or that you
+   are an LLM.
+5. LANGUAGE: reply in the SAME language the customer writes in (Indonesian or
+   English). But ALWAYS call retrieval tools with ENGLISH keywords (the catalog
+   and knowledge base are in English), even when the customer writes Indonesian.
 """
 
 
@@ -76,36 +83,45 @@ def _select(advisor: bool):
     return _agent_advisor() if advisor else _agent()
 
 
-def _to_lc(messages):
+_LANG_DIRECTIVE = {"id": "\n\n[Respond in Indonesian.]", "en": "\n\n[Respond in English.]"}
+
+
+def _to_lc(messages, lang: str | None = None):
     """Accept a plain string (single turn) or a list of {role, content} history
     and return LangChain messages. Feeding history back gives the agent memory of
-    the quote/customer it just produced."""
+    the quote/customer it just produced. `lang` ('id'/'en') appends a one-off
+    language directive to the current turn WITHOUT polluting stored history."""
     if isinstance(messages, str):
-        return [HumanMessage(content=messages)]
-    out = []
-    for m in messages[-HISTORY_TURNS:]:
-        c = (m.get("content") or "").strip()
-        if not c:
-            continue
-        out.append(HumanMessage(content=c) if m.get("role") == "user" else AIMessage(content=c))
-    return out or [HumanMessage(content="(empty)")]
+        out = [HumanMessage(content=messages)]
+    else:
+        out = []
+        for m in messages[-HISTORY_TURNS:]:
+            c = (m.get("content") or "").strip()
+            if not c:
+                continue
+            out.append(HumanMessage(content=c) if m.get("role") == "user" else AIMessage(content=c))
+        out = out or [HumanMessage(content="(empty)")]
+    if lang in _LANG_DIRECTIVE and isinstance(out[-1], HumanMessage):
+        out[-1] = HumanMessage(content=out[-1].content + _LANG_DIRECTIVE[lang])
+    return out
 
 
-def _payload(messages) -> dict[str, Any]:
-    return {"messages": _to_lc(messages)}
+def _payload(messages, lang: str | None = None) -> dict[str, Any]:
+    return {"messages": _to_lc(messages, lang)}
 
 
-def run(messages, advisor: bool = False) -> dict[str, Any]:
-    result = _select(advisor).invoke(_payload(messages))
+def run(messages, advisor: bool = False, lang: str | None = None) -> dict[str, Any]:
+    result = _select(advisor).invoke(_payload(messages, lang))
     msgs = result["messages"]
     return {"answer": msgs[-1].content, "trace": _trace(msgs)}
 
 
-def stream(messages, advisor: bool = False) -> Iterator[dict[str, Any]]:
+def stream(messages, advisor: bool = False, lang: str | None = None) -> Iterator[dict[str, Any]]:
     """Yield {type, ...} events as the agent thinks/acts — drives the live UI.
     `messages` is the full conversation history (list) or a single string.
-    advisor=True uses the external customer-facing agent (no pricing tools)."""
-    for chunk in _select(advisor).stream(_payload(messages), stream_mode="updates"):
+    advisor=True uses the external customer-facing agent (no pricing tools).
+    lang ('id'/'en') forces the reply language; None = match the user."""
+    for chunk in _select(advisor).stream(_payload(messages, lang), stream_mode="updates"):
         for node, payload in chunk.items():
             for m in payload.get("messages", []):
                 tool_calls = getattr(m, "tool_calls", None)
