@@ -10,7 +10,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langgraph.prebuilt import create_react_agent
 from functools import lru_cache
 from ..llm import chat_model
-from .tools import ALL_TOOLS
+from .tools import ALL_TOOLS, EXTERNAL_TOOLS
 
 # how many prior turns to feed back as context (keeps tokens bounded)
 HISTORY_TURNS = 12
@@ -35,10 +35,43 @@ Operating rules:
 """
 
 
+ADVISOR_SYSTEM = """You are the Kemindo Solution Advisor — the friendly, public,
+customer-facing assistant for Kemindo Group ("Your Solution Partner"), an
+industrial solution provider (chemicals for gold mining, nickel, paper,
+agriculture; plus logistics and energy).
+
+Your job: help customers understand Kemindo's products, solve their operational
+problems with technical guidance, answer questions about the company, and capture
+their inquiry so a sales specialist can follow up.
+
+Strict rules:
+1. NEVER quote prices, margins, costs, or internal stock levels — you don't have
+   them and must not invent them. If asked for price/availability/quotation, say a
+   Kemindo specialist will prepare a formal quotation, and call capture_lead.
+2. Recommend real Kemindo products (search_product) and give technical guidance
+   (knowledge_lookup, calc_dosage) with citations. For chemicals, remind that
+   dosages must be validated with their engineer + SDS.
+3. When the customer shows buying intent or asks for a quote/price/sample, collect
+   company + contact + need and call capture_lead, then confirm a specialist will
+   reach out.
+4. Be warm, professional, concise. Answer in English. Never expose internal
+   tooling or that you are an LLM.
+"""
+
+
 @lru_cache
 def _agent():
     # langgraph 0.2.x uses `state_modifier` (a system prompt str/SystemMessage)
     return create_react_agent(chat_model(), ALL_TOOLS, state_modifier=SYSTEM)
+
+
+@lru_cache
+def _agent_advisor():
+    return create_react_agent(chat_model(), EXTERNAL_TOOLS, state_modifier=ADVISOR_SYSTEM)
+
+
+def _select(advisor: bool):
+    return _agent_advisor() if advisor else _agent()
 
 
 def _to_lc(messages):
@@ -60,16 +93,17 @@ def _payload(messages) -> dict[str, Any]:
     return {"messages": _to_lc(messages)}
 
 
-def run(messages) -> dict[str, Any]:
-    result = _agent().invoke(_payload(messages))
+def run(messages, advisor: bool = False) -> dict[str, Any]:
+    result = _select(advisor).invoke(_payload(messages))
     msgs = result["messages"]
     return {"answer": msgs[-1].content, "trace": _trace(msgs)}
 
 
-def stream(messages) -> Iterator[dict[str, Any]]:
+def stream(messages, advisor: bool = False) -> Iterator[dict[str, Any]]:
     """Yield {type, ...} events as the agent thinks/acts — drives the live UI.
-    `messages` is the full conversation history (list) or a single string."""
-    for chunk in _agent().stream(_payload(messages), stream_mode="updates"):
+    `messages` is the full conversation history (list) or a single string.
+    advisor=True uses the external customer-facing agent (no pricing tools)."""
+    for chunk in _select(advisor).stream(_payload(messages), stream_mode="updates"):
         for node, payload in chunk.items():
             for m in payload.get("messages", []):
                 tool_calls = getattr(m, "tool_calls", None)

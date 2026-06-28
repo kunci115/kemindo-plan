@@ -106,6 +106,24 @@ def build_quotation(customer_name: str, lines: list[dict], payment_term: str = "
                       ensure_ascii=False)
 
 
+@tool
+def capture_lead(company_name: str | None = None, contact: str | None = None,
+                 industry: str | None = None, need: str | None = None,
+                 products_of_interest: list[str] | None = None) -> str:
+    """Capture a customer inquiry so a Kemindo sales specialist can follow up with
+    pricing + a formal quotation. Call this once you have at least the customer's
+    need and a way to reach them (company or contact)."""
+    from ..store_leads import save_lead
+    lead = save_lead(company_name, contact, industry, need, products_of_interest)
+    return json.dumps({"lead_id": lead["id"], "status": "captured",
+                       "message": "Inquiry forwarded to Kemindo sales team."}, ensure_ascii=False)
+
+
+# internal staff tools (full) — pricing, margin, stock, quotation
 ALL_TOOLS = [search_product, knowledge_lookup, calc_dosage, stoichiometry,
              check_compatibility, check_inventory, price_quote_line,
              win_loss_hint, build_quotation]
+
+# external customer tools — NO price/margin/cost/internal-stock exposure
+EXTERNAL_TOOLS = [search_product, knowledge_lookup, calc_dosage, stoichiometry,
+                  check_compatibility, capture_lead]

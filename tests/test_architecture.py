@@ -11,7 +11,8 @@ def test_graph_is_consistent():
     edges = [e["data"] for e in g["elements"] if "source" in e["data"]]
     # core nodes present
     assert "agent" in nodes
-    assert g["stats"]["tools"] == 9
+    assert "advisor" in nodes                # external tier present
+    assert g["stats"]["tools"] >= 10         # 9 internal + capture_lead
     assert g["stats"]["engines"] >= 5
     # every edge connects existing nodes
     for e in edges:

@@ -61,6 +61,44 @@ def architecture():
     return build_architecture()
 
 
+# ---------------- external Solution Advisor (customer-facing) ----------------
+@app.get("/advisor", response_class=HTMLResponse)
+def advisor_page():
+    f = WEB / "advisor.html"
+    return f.read_text(encoding="utf-8") if f.exists() else "<h1>advisor UI missing</h1>"
+
+
+@app.post("/advisor/chat/stream")
+def advisor_stream(body: ChatIn):
+    from .agent.graph import stream
+    from .store_conversations import new_conversation, append_message, get_conversation
+
+    sid = body.session_id
+    if not sid or get_conversation(sid) is None:
+        sid = new_conversation(owner="public")["id"]
+    append_message(sid, "user", body.message)
+    conv = get_conversation(sid)
+    history = conv["messages"] if conv else [{"role": "user", "content": body.message}]
+
+    def gen():
+        yield f"data: {json.dumps({'type': 'session', 'session_id': sid})}\n\n"
+        answer = ""
+        for ev in stream(history, advisor=True):
+            if ev.get("type") == "assistant":
+                answer = ev.get("content", "")
+            yield f"data: {json.dumps(ev, ensure_ascii=False)}\n\n"
+        append_message(sid, "assistant", answer)
+        yield f"data: {json.dumps({'type': 'done', 'session_id': sid})}\n\n"
+
+    return StreamingResponse(gen(), media_type="text/event-stream")
+
+
+@app.get("/leads")
+def leads():
+    from .store_leads import list_leads
+    return list_leads()
+
+
 @app.post("/chat")
 def chat(body: ChatIn):
     from .agent.graph import run

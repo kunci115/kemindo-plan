@@ -220,3 +220,4 @@ __marimo__/
 # runtime-generated demo data
 data/conversations/
 data/quotations/
+data/leads/

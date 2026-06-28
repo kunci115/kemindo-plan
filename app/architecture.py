@@ -57,6 +57,16 @@ NODES: list[dict[str, Any]] = [
     {"id": "d_know", "label": "knowledge/*.md", "layer": "data", "desc": "Gold/nickel/paper handbooks (cited)."},
     {"id": "d_quotes", "label": "quotations store", "layer": "data", "desc": "Persisted quotes (DRAFT...)."},
 
+    # external tier (Solution Advisor) — built
+    {"id": "customer", "label": "Customer / Prospect", "layer": "user",
+     "desc": "External user on the web. No access to pricing, margin, or internal stock."},
+    {"id": "advisor", "label": "Solution Advisor\n(external · DeepSeek)", "layer": "agent",
+     "desc": "Public customer-facing agent: product + technical guidance, company info, lead capture. Never exposes pricing/margin/stock."},
+    {"id": "capture_lead", "label": "capture_lead", "layer": "tool",
+     "desc": "Capture a customer inquiry -> routes to the sales team."},
+    {"id": "d_leads", "label": "leads store", "layer": "data", "desc": "Captured customer inquiries."},
+    {"id": "d_profile", "label": "company_profile.md", "layer": "data", "desc": "Public company-profile knowledge."},
+
     # future agents (roadmap) — dashed in UI
     {"id": "a_procure", "label": "Procurement Agent", "layer": "future", "status": "future",
      "desc": "Planned: supplier selection + negotiation."},
@@ -86,6 +96,12 @@ EDGES: list[tuple[str, str]] = [
     ("eng_price", "d_pricing"), ("eng_price", "d_rfq"),
     ("check_inventory", "d_inventory"),
     ("eng_quote", "d_pricing"), ("eng_quote", "d_quotes"),
+    # external Solution Advisor tier
+    ("customer", "advisor"),
+    ("advisor", "search_product"), ("advisor", "knowledge_lookup"),
+    ("advisor", "calc_dosage"), ("advisor", "check_compatibility"), ("advisor", "capture_lead"),
+    ("capture_lead", "d_leads"), ("knowledge_lookup", "d_profile"),
+    ("d_leads", "agent"),   # captured leads feed the internal sales copilot
     # future (dashed)
     ("agent", "a_procure"), ("agent", "a_logistics"), ("agent", "a_exec"), ("agent", "a_email"),
 ]

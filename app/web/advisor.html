@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kemindo Solution Advisor</title>
+<link rel="icon" href="/assets/kemindo.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root{--bg:#f6f7f9;--surface:#fff;--line:#e6e9ef;--ink:#1b2333;--mut:#697586;--brand:#d5202a;--brand-d:#b0171e;--soft:#fdecec;--ok:#0a7d4d}
+  *{box-sizing:border-box}html,body{height:100%;margin:0}
+  body{font:15px/1.6 Inter,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);display:flex;flex-direction:column}
+  header{background:linear-gradient(120deg,#fff 0%,#fff 60%,#fdecec 100%);border-bottom:1px solid var(--line);
+    padding:18px 26px;display:flex;align-items:center;gap:14px}
+  header img{height:30px}
+  header .t b{font-size:17px;display:block}
+  header .t span{font-size:12.5px;color:var(--mut)}
+  header .grow{flex:1}
+  header .spec{font-size:12.5px;color:var(--brand);font-weight:600;border:1px solid #f3d0d2;background:#fff;
+    padding:7px 13px;border-radius:20px}
+  .stage{flex:1;overflow:auto;display:flex;justify-content:center}
+  .col{width:100%;max-width:820px;padding:26px 22px 10px}
+  .hero{text-align:center;padding:18px 0 26px}
+  .hero h1{font-size:26px;margin:0 0 8px}.hero p{color:var(--mut);margin:0 auto;max-width:560px}
+  .hero .cats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .hero .cats b{font-weight:500;font-size:13px;background:#fff;border:1px solid var(--line);padding:8px 13px;
+    border-radius:22px;cursor:pointer;color:#3d4860}
+  .hero .cats b:hover{border-color:var(--brand);color:var(--brand)}
+  .row{display:flex;gap:12px;margin:0 0 18px;align-items:flex-start}
+  .row.me{flex-direction:row-reverse}
+  .av{width:32px;height:32px;border-radius:8px;flex:none;display:grid;place-items:center;font-size:12px;font-weight:700}
+  .av.bot{background:var(--brand);color:#fff}.av.me{background:#e7eaf0;color:var(--ink)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:3px 18px;max-width:660px;
+    box-shadow:0 1px 3px rgba(16,24,40,.05)}
+  .row.me .card{background:var(--soft);border-color:#f3d6d8;padding:11px 16px}
+  .md h2{font-size:16px;border-bottom:1px solid #eef1f5;padding-bottom:5px}.md h3{font-size:14.5px}
+  .md table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13.5px;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .md th{background:#f7f8fb;text-align:left;padding:8px 11px;border-bottom:1px solid var(--line)}
+  .md td{padding:8px 11px;border-bottom:1px solid #eef1f5}.md tr:last-child td{border-bottom:0}
+  .md blockquote{border-left:3px solid var(--brand);background:var(--soft);margin:9px 0;padding:7px 13px;border-radius:0 7px 7px 0;color:#3d4860}
+  .md code{background:#f3f5f8;border:1px solid var(--line);padding:1px 5px;border-radius:5px;font-size:12.5px}
+  .toast{background:#e8f6ef;border:1px solid #bce6d2;color:var(--ok);border-radius:10px;padding:10px 14px;
+    margin:0 0 18px;font-size:13.5px;font-weight:500;display:flex;gap:8px;align-items:center}
+  .cursor::after{content:'▍';color:var(--brand);animation:bl 1s steps(2) infinite}@keyframes bl{50%{opacity:0}}
+  .composer{border-top:1px solid var(--line);background:var(--surface);padding:14px 22px}
+  .cin{max-width:820px;margin:0 auto;display:flex;gap:10px}
+  input{flex:1;border:1px solid var(--line);border-radius:11px;padding:13px 15px;font:15px Inter;outline:none}
+  input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--soft)}
+  button{background:var(--brand);color:#fff;border:0;border-radius:11px;padding:13px 20px;font-weight:600;cursor:pointer}
+  button:disabled{opacity:.5}
+  .foot{max-width:820px;margin:8px auto 0;font-size:11.5px;color:var(--mut);text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <img src="/assets/kemindo.png"/>
+  <div class="t"><b>Solution Advisor</b><span>Your Solution Partner® — chemicals, mining, paper, nickel, energy</span></div>
+  <div class="grow"></div>
+  <span class="spec">Talk to a specialist</span>
+</header>
+<div class="stage"><div class="col" id="col">
+  <div class="hero" id="hero">
+    <h1>How can we help your operation?</h1>
+    <p>Describe your process challenge — gold recovery, paper brightness, nickel reagents, water treatment — and we'll recommend the right Kemindo solution and connect you with a specialist.</p>
+    <div class="cats">
+      <b onclick="ask(this)">My gold recovery has dropped — what do you recommend?</b>
+      <b onclick="ask(this)">I need chemicals for a paper mill (brightness/retention)</b>
+      <b onclick="ask(this)">Reagents for HPAL nickel processing</b>
+      <b onclick="ask(this)">Tell me about Kemindo Group</b>
+      <b onclick="ask(this)">I'd like a quotation</b>
+    </div>
+  </div>
+</div></div>
+<div class="composer">
+  <div class="cin">
+    <input id="m" placeholder="Describe your need, or ask about our products and company…" autocomplete="off"/>
+    <button id="send" onclick="send()">Send</button>
+  </div>
+  <div class="foot">Kemindo Solution Advisor provides product & technical guidance. Pricing and formal quotations are prepared by our sales team.</div>
+</div>
+<script>
+marked.setOptions({breaks:true,gfm:true});
+const col=document.getElementById('col'),input=document.getElementById('m'),sendBtn=document.getElementById('send');
+let session=null,busy=false;
+input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
+function ask(e){input.value=e.textContent;send();}
+function row(role){const r=document.createElement('div');r.className='row '+(role==='me'?'me':'');
+  r.innerHTML=`<div class="av ${role==='me'?'me':'bot'}">${role==='me'?'You':'K'}</div><div class="card ${role==='bot'?'md':''}"></div>`;
+  col.appendChild(r);scrollDown();return r.querySelector('.card');}
+function setMd(el,t){el.innerHTML=marked.parse(t||'');scrollDown();}
+function scrollDown(){const s=document.querySelector('.stage');s.scrollTop=s.scrollHeight;}
+function toast(msg){const d=document.createElement('div');d.className='toast';d.textContent='✓ '+msg;col.appendChild(d);scrollDown();}
+
+async function send(){if(busy)return;const text=input.value.trim();if(!text)return;input.value='';
+  const hero=document.getElementById('hero');if(hero)hero.remove();
+  busy=true;sendBtn.disabled=true;row('me').textContent=text;
+  const card=row('bot');card.classList.add('cursor');let acc='',lead=false;
+  try{
+    const res=await fetch('/advisor/chat/stream',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:text,session_id:session})});
+    const rd=res.body.getReader();const dec=new TextDecoder();let buf='';
+    while(true){const{done,value}=await rd.read();if(done)break;buf+=dec.decode(value,{stream:true});
+      let i;while((i=buf.indexOf('\n\n'))>=0){const line=buf.slice(0,i);buf=buf.slice(i+2);
+        if(!line.startsWith('data:'))continue;const ob=JSON.parse(line.slice(5).trim());
+        if(ob.type==='session')session=ob.session_id;
+        else if(ob.type==='tool_result'&&ob.tool==='capture_lead')lead=true;
+        else if(ob.type==='assistant'){acc=ob.content;setMd(card,acc);}
+      }}
+  }catch(err){acc+='\n\n*Sorry, something went wrong: '+err.message+'*';setMd(card,acc);}
+  card.classList.remove('cursor');setMd(card,acc);
+  if(lead)toast('Your inquiry has been sent to our sales team — a specialist will contact you.');
+  busy=false;sendBtn.disabled=false;}
+</script>
+</body>
+</html>
