@@ -48,6 +48,8 @@ This copilot does it in **minutes** — and increases revenue on four levers:
 | **Hybrid retrieval + citations** | BM25 + dense + reranker (RRF) — every product, dosage, and fact is **cited to its source** |
 | **Margin decision engine** | Floor margin, volume/payment tiers, approval routing — *LLM proposes, rules dispose* |
 | **Deterministic numbers** | Unit conversion (e.g. 50 MT → 50,000 kg), pricing, dosage all computed by engines; the agent presents a **canonical summary verbatim** — chat figures always equal the quote/PDF |
+| **Bilingual ID/EN** | Replies in the user's language (or a forced toggle); retrieval always queries the English catalog with English keywords so matching stays accurate |
+| **Grounded by construction** | Every product code comes from `search_product`, every price from a pricing tool, every quote/PDF from `build_quotation` — the agent may not name a product or quote a price from memory |
 | **Quotation + PDF** | Persisted, numbered quote → **branded PDF** (Kemindo letterhead) one click away |
 | **External advisor + lead capture** | Public agent answers customers without exposing pricing, and files inquiries to `/leads` for sales follow-up |
 | **Conversation memory** | Remembers the quote/customer across turns ("draft an email for this quote" just works) |
@@ -114,6 +116,16 @@ Interactive map: **`/graph`** (Cytoscape — click nodes, drag, zoom).
 
 ---
 
+## Usage notes & guardrails
+
+- **One conversation per customer / deal.** Each thread carries ~12 turns of memory; mixing several customers or RFQs in one thread can blend context. Use **New conversation** per customer — history is kept in the sidebar. The agent also anchors on the most recent customer/quote and asks a clarifying question when a request is ambiguous.
+- **Numbers and product codes are tool-grounded.** The agent cannot quote a price, dosage, stock figure, or product code from memory — they come only from the engines/tools, so chat always matches the quote and PDF.
+- **To create or update a quotation / its PDF**, just ask (e.g. *"build a quotation…"*, *"swap item 1 to Quick Lime and make the PDF"*) — the agent re-runs `build_quotation` and a **Download PDF** button appears.
+- **Language:** toggle EN/ID in the header, or just write in either language.
+- **Dataset is demo-grade:** prices/stock/RFQ history are realistic dummy; validate dosages with a metallurgist + SDS before any field use.
+
+---
+
 ## Tech stack
 
 - **LLM:** DeepSeek (`deepseek-chat` tools + `deepseek-reasoner`), OpenAI-compatible
@@ -170,6 +182,8 @@ archive/              superseded v1 design docs
 | Quotation persistence + branded PDF + canonical summary | ERP / CRM integration (replace dummy data) |
 | Hybrid retrieval (BM25 active; dense pending a torch fix) | Procurement / logistics / executive agents |
 | Conversation history + enterprise UI | Auto-route a captured lead into a quote |
+| Bilingual ID/EN (toggle + language-aware agents) | |
+| Tool-grounded guardrails (no memory-quoted prices/codes) | |
 | Multimodal ingest + auto-chain · architecture graph · eval + CI | |
 
 > Dataset note: catalog names/brands are **real** (scraped from Kemindo sites); prices, stock, and RFQ history are **realistic dummy** — swap for ERP data before production. Details in [data/README.md](data/README.md).
