@@ -5,7 +5,7 @@ os.environ.setdefault("ENABLE_DENSE_RETRIEVAL", "false")
 
 from fastapi.testclient import TestClient
 from app.api import app
-from app.store_leads import save_lead, list_leads
+from app.store_leads import save_lead, list_leads, get_lead
 from app.data_store import get_store
 
 client = TestClient(app)
@@ -17,6 +17,10 @@ def test_lead_capture_persists():
     assert lead["id"].startswith("L-")
     assert lead["status"] == "NEW"
     assert any(l["id"] == lead["id"] for l in list_leads())
+    # retrievable by id (so the internal Copilot can quote a captured lead)
+    fetched = get_lead(lead["id"])
+    assert fetched is not None and fetched["company"] == "PT Vale Indonesia"
+    assert get_lead("L-nope") is None
     # via API
     r = client.get("/leads")
     assert r.status_code == 200

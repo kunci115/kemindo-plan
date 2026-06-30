@@ -123,10 +123,32 @@ def capture_lead(company_name: str | None = None, contact: str | None = None,
                        "message": "Inquiry forwarded to Kemindo sales team."}, ensure_ascii=False)
 
 
-# internal staff tools (full) — pricing, margin, stock, quotation
+@tool
+def get_lead(lead_id: str) -> str:
+    """Fetch a captured customer lead by its ID (e.g. "L-6cac0bf0"). Returns the
+    company, contact, industry, need, and products of interest — use this to start
+    a quotation from a lead the Solution Advisor captured."""
+    from ..store_leads import get_lead as _get
+    lead = _get(lead_id.strip())
+    if not lead:
+        return json.dumps({"error": f"no lead {lead_id}"})
+    return json.dumps(lead, ensure_ascii=False)
+
+
+@tool
+def list_new_leads() -> str:
+    """List recent captured customer leads (id, company, need, status) so the
+    sales engineer can pick one to quote."""
+    from ..store_leads import list_leads
+    rows = [{"id": l["id"], "company": l.get("company"), "industry": l.get("industry"),
+             "need": l.get("need"), "status": l.get("status")} for l in list_leads()[:20]]
+    return json.dumps(rows, ensure_ascii=False)
+
+
+# internal staff tools (full) — pricing, margin, stock, quotation, leads
 ALL_TOOLS = [search_product, knowledge_lookup, calc_dosage, stoichiometry,
              check_compatibility, check_inventory, price_quote_line,
-             win_loss_hint, build_quotation]
+             win_loss_hint, build_quotation, get_lead, list_new_leads]
 
 # external customer tools — NO price/margin/cost/internal-stock exposure
 EXTERNAL_TOOLS = [search_product, knowledge_lookup, calc_dosage, stoichiometry,

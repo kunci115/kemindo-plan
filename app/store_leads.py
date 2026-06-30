@@ -27,8 +27,13 @@ def save_lead(company: str | None, contact: str | None, industry: str | None,
     return lead
 
 
+def get_lead(lead_id: str) -> dict[str, Any] | None:
+    p = LEAD_DIR / f"{lead_id}.json"
+    if not p.exists():
+        return None
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
 def list_leads() -> list[dict[str, Any]]:
-    out = []
-    for p in sorted(LEAD_DIR.glob("L-*.json"), reverse=True):
-        out.append(json.loads(p.read_text(encoding="utf-8")))
-    return out
+    out = [json.loads(p.read_text(encoding="utf-8")) for p in LEAD_DIR.glob("L-*.json")]
+    return sorted(out, key=lambda l: l.get("created", ""), reverse=True)  # newest first
